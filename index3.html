@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINANCIER AMOUNT APPROVE - e-Vahan</title>
+    <title>FINANCIER DETAILS - e-Vahan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Bootstrap Primary Color Override */
@@ -734,6 +734,26 @@
             height: 16px;
             fill: currentColor;
         }
+
+        .table {
+            font-size: 14px;
+        }
+
+        .table thead th {
+            background-color: #C7DFF7;
+            font-weight: bold;
+            border: 1px solid #029EDA;
+            padding: 8px;
+        }
+
+        .table tbody td {
+            border: 1px solid #029EDA;
+            padding: 8px;
+        }
+
+        .table tbody tr {
+            background-color: white;
+        }
     </style>
 </head>
 
@@ -852,7 +872,7 @@
     <!-- Main Content -->
     <div class="container-fluid py-4">
         <div class="form-title">
-            <span>FINANCIER AMOUNT APPROVE</span>
+            <span>FINANCIER DETAILS</span>
         </div>
 
         <!-- Application No -->
@@ -883,9 +903,9 @@
                     <!-- Registration Information -->
                     <div class="mb-3">
                         <div class="registration-header">
-                            Registration No: <span class="text-danger fw-bold">AP07 TC5860</span> State <span
+                            Registration No: <span class="text-danger fw-bold">AP07TE3301</span> State <span
                                 class="text-danger fw-bold">Andhra Pradesh</span> Office <span
-                                class="text-danger fw-bold">Guntur RTA</span>
+                                class="text-danger fw-bold">TENALI RTA</span>
                         </div>
                     </div>
 
@@ -901,22 +921,22 @@
                             <div class="col-md-4">
                                 <label class="form-label">Purchase/Delivery Date</label>
                                 <input type="text" class="form-control form-control-sm owner-info-input"
-                                    value="03-Nov-2012" readonly>
+                                    value="16-May-2014" readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Registration Date</label>
                                 <input type="text" class="form-control form-control-sm owner-info-input"
-                                    value="03-Nov-2012" readonly>
+                                    value="16-May-2014" readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Owner Name</label>
-                                <input type="text" class="form-control form-control-sm owner-info-input" value="KISHORE"
+                                <input type="text" class="form-control form-control-sm owner-info-input" value="SHAIK SHABHEER"
                                     readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Son/Wife/Daughter of</label>
                                 <input type="text" class="form-control form-control-sm owner-info-input"
-                                    value="POTHURAJ" readonly>
+                                    value="SHAIK MASTAN" readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Ownership Type</label>
@@ -925,18 +945,18 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Ownership Serial</label>
-                                <input type="text" class="form-control form-control-sm owner-info-input" value="1"
+                                <input type="text" class="form-control form-control-sm owner-info-input" value="2"
                                     readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Registration Valid Upto</label>
                                 <input type="text" class="form-control form-control-sm owner-info-input"
-                                    value="06-Nov-2026" readonly>
+                                    value="25-Sep-2026" readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Fitness Valid Upto</label>
                                 <input type="text" class="form-control form-control-sm owner-info-input"
-                                    value="06-Nov-2026" readonly>
+                                    value="25-Sep-2026" readonly>
                             </div>
                         </div>
 
@@ -955,15 +975,15 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Mobile No<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-sm" value="9160212062">
+                                    <input type="text" class="form-control form-control-sm" value="9573292651">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Email ID</label>
-                                    <input type="text" class="form-control form-control-sm" value="NA">
+                                    <input type="text" class="form-control form-control-sm" value="">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Ration Card No</label>
-                                    <input type="text" class="form-control form-control-sm" value="007P260323">
+                                    <input type="text" class="form-control form-control-sm" value="INC8220724">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Aadhaar No</label>
@@ -972,16 +992,19 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Passport No</label>
-                                    <input type="text" class="form-control form-control-sm" value="">
+                                    <input type="text" class="form-control form-control-sm" value="NA" readonly
+                                        style="background-color: #e9ecef;">
                                 </div>
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4">
                                     <label class="form-label">Voter ID</label>
-                                    <input type="text" class="form-control form-control-sm" value="">
+                                    <input type="text" class="form-control form-control-sm" value="NA" readonly
+                                        style="background-color: #e9ecef;">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">DL/LL No</label>
-                                    <input type="text" class="form-control form-control-sm" value="">
+                                    <input type="text" class="form-control form-control-sm" value="NA" readonly
+                                        style="background-color: #e9ecef;">
                                 </div>
                             </div>
                         </div>
@@ -996,17 +1019,17 @@
                                     <div class="row g-3">
                                         <div class="col-6">
                                             <label class="form-label">House No. & Street Name</label>
-                                            <input type="text" class="form-control form-control-sm" value="31-16-20"
+                                            <input type="text" class="form-control form-control-sm" value="18-8-6 MASEED ROAD ISLAMPET"
                                                 readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Village/Town/City</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                value="SULTANABAD, TENALI" readonly>
+                                                value="TENALI" readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Landmark/Police Station</label>
-                                            <input type="text" class="form-control form-control-sm" value="TENALI"
+                                            <input type="text" class="form-control form-control-sm" value=""
                                                 readonly>
                                         </div>
                                         <div class="col-6">
@@ -1021,7 +1044,7 @@
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Pin</label>
-                                            <input type="text" class="form-control form-control-sm" value="522202"
+                                            <input type="text" class="form-control form-control-sm" value="522201"
                                                 readonly>
                                         </div>
                                     </div>
@@ -1035,17 +1058,17 @@
                                     <div class="row g-3">
                                         <div class="col-6">
                                             <label class="form-label">House No. & Street Name</label>
-                                            <input type="text" class="form-control form-control-sm" value="31-16-20,"
+                                            <input type="text" class="form-control form-control-sm" value="18-8-6 MASEED ROAD TENALI ISLAM PE"
                                                 readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Village/Town/City</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                value="SULTANABAD, TENALI" readonly>
+                                                value="A" readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Landmark/Police Station</label>
-                                            <input type="text" class="form-control form-control-sm" value="GUNTUR"
+                                            <input type="text" class="form-control form-control-sm" value=""
                                                 readonly>
                                         </div>
                                         <div class="col-6">
@@ -1060,93 +1083,11 @@
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Pin</label>
-                                            <input type="text" class="form-control form-control-sm" value="999999"
+                                            <input type="text" class="form-control form-control-sm" value="522201"
                                                 readonly>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Hypothecation Information -->
-                    <div class="form-section">
-                        <div class="form-section-title">Hypothecation Information</div>
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <label class="form-label">Hypothecation Type</label>
-                                <div class="dropdown" style="position: relative;">
-                                    <button
-                                        class="btn btn-secondary bg-white text-dark fw-bold border border-primary dropdown-toggle dropdown-toggle-before w-100 text-start"
-                                        type="button" id="hypothecationDropdown" data-bs-toggle="dropdown"
-                                        aria-expanded="false"
-                                        style="display: flex; align-items: center; justify-content: space-between; height: 31px;">
-                                        -SELECT-
-                                    </button>
-                                    <ul class="dropdown-menu w-100 px-2" id="hypothecationDropdownMenu"
-                                        aria-labelledby="hypothecationDropdown">
-                                        <li class="px-3 py-2" onclick="event.stopPropagation()">
-                                            <div class="d-flex align-items-center gap-2 position-relative"
-                                                style="max-width: 300px;">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="hypothecationSearchInput" placeholder="Search..."
-                                                    style="flex: 1; background-color: #C5FFC5; padding-right: 50px;">
-                                                <button class="dropdown-search-btn" type="button" title="Search"
-                                                    onclick="event.stopPropagation()">
-                                                    <svg viewBox="0 0 16 16" fill="currentColor">
-                                                        <path
-                                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h6 class="dropdown-header mb-0">Hypothecation Type</h6>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Hire-Purchase</a></li>
-                                        <li><a class="dropdown-item" href="#">Hypothecation</a></li>
-                                        <li><a class="dropdown-item" href="#">Lease Agreement</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label">Financer Name</label>
-                                <input type="text" class="form-control form-control-sm" value="OM SRI SHANMUKHA FINANCE"
-                                    readonly>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label">Village/Town/City</label>
-                                <input type="text" class="form-control form-control-sm" value="TENALI" readonly>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label">District</label>
-                                <input type="text" class="form-control form-control-sm" value="Guntur" readonly>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label">From Date (DD-MMM-YYYY)</label>
-                                <input type="text" class="form-control form-control-sm" value="12-Nov-2025">
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label">Landmark/Police Station</label>
-                                <input type="text" class="form-control form-control-sm"
-                                    value="VYSHNAVI COLLAGE BACK SIDE" readonly>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label">PIN Code</label>
-                                <input type="text" class="form-control form-control-sm" value="522201" readonly>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sanction Amount -->
-                    <div class="mb-3">
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <label class="form-label">SANCTION AMOUNT<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control form-control-sm" placeholder="Enter Amount">
                             </div>
                         </div>
                     </div>
@@ -1326,8 +1267,8 @@
                             <div class="form-section-child-title">Axle Details</div>
                             <div class="row g-3 mb-3">
                                 <div class="col-md-6">
-                                    <label class="form-label">No Of Axle's<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-sm" value="" readonly>
+                                    <label class="form-label">No Of Axle's</label>
+                                    <input type="text" class="form-control form-control-sm" value="">
                                 </div>
                             </div>
 
@@ -1337,35 +1278,35 @@
                                 <div class="row g-3">
                                     <div class="col-md-3">
                                         <label class="form-label">Front*</label>
-                                        <input type="text" class="form-control form-control-sm" value="" readonly>
+                                        <input type="text" class="form-control form-control-sm" value="">
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Front_tyre*</label>
-                                        <input type="text" class="form-control form-control-sm" value="" readonly>
+                                        <input type="text" class="form-control form-control-sm" value="">
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Other</label>
-                                        <input type="text" class="form-control form-control-sm" value="" readonly>
+                                        <input type="text" class="form-control form-control-sm" value="">
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Other_tyre</label>
-                                        <input type="text" class="form-control form-control-sm" value="" readonly>
+                                        <input type="text" class="form-control form-control-sm" value="">
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Rear*</label>
-                                        <input type="text" class="form-control form-control-sm" value="" readonly>
+                                        <input type="text" class="form-control form-control-sm" value="">
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Rear_tyre*</label>
-                                        <input type="text" class="form-control form-control-sm" value="" readonly>
+                                        <input type="text" class="form-control form-control-sm" value="">
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Tandem</label>
-                                        <input type="text" class="form-control form-control-sm" value="" readonly>
+                                        <input type="text" class="form-control form-control-sm" value="">
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Tandem_tyre</label>
-                                        <input type="text" class="form-control form-control-sm" value="" readonly>
+                                        <input type="text" class="form-control form-control-sm" value="">
                                     </div>
                                 </div>
                             </div>
@@ -1373,7 +1314,7 @@
                             <div class="row g-3 mb-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Rear Overhang(mm)</label>
-                                    <input type="text" class="form-control form-control-sm" value="0" readonly>
+                                    <input type="text" class="form-control form-control-sm" value="0">
                                 </div>
                             </div>
 
@@ -1383,115 +1324,53 @@
                                 <div class="row g-3">
                                     <div class="col-md-3">
                                         <label class="form-label">Front*</label>
-                                        <input type="text" class="form-control form-control-sm" value="" readonly>
+                                        <input type="text" class="form-control form-control-sm" value="">
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Rear*</label>
-                                        <input type="text" class="form-control form-control-sm" value="" readonly>
+                                        <input type="text" class="form-control form-control-sm" value="">
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Other</label>
-                                        <input type="text" class="form-control form-control-sm" value="" readonly>
+                                        <input type="text" class="form-control form-control-sm" value="">
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Tandem</label>
-                                        <input type="text" class="form-control form-control-sm" value="" readonly>
+                                        <input type="text" class="form-control form-control-sm" value="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Hypothecation Information -->
-                    <div class="form-section">
-                        <div class="form-section-title">Hypothecation Information</div>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Hypothecation Type</label>
-                                <div class="dropdown" style="position: relative;">
-                                    <button
-                                        class="btn btn-secondary bg-white text-dark fw-bold border border-primary dropdown-toggle dropdown-toggle-before w-100 text-start"
-                                        type="button" id="hypothecationDropdown2" data-bs-toggle="dropdown"
-                                        aria-expanded="false"
-                                        style="display: flex; align-items: center; justify-content: space-between; height: 31px;">
-                                        -SELECT-
-                                    </button>
-                                    <ul class="dropdown-menu w-100 px-2" id="hypothecationDropdownMenu2"
-                                        aria-labelledby="hypothecationDropdown2">
-                                        <li class="px-3 py-2" onclick="event.stopPropagation()">
-                                            <div class="d-flex align-items-center gap-2 position-relative"
-                                                style="max-width: 300px;">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="hypothecationSearchInput2" placeholder="Search..."
-                                                    style="flex: 1; background-color: #C5FFC5; padding-right: 50px;">
-                                                <button class="dropdown-search-btn" type="button" title="Search"
-                                                    onclick="event.stopPropagation()">
-                                                    <svg viewBox="0 0 16 16" fill="currentColor">
-                                                        <path
-                                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h6 class="dropdown-header mb-0">Hypothecation Type</h6>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Hire-Purchase</a></li>
-                                        <li><a class="dropdown-item" href="#">Hypothecation</a></li>
-                                        <li><a class="dropdown-item" href="#">Lease Agreement</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Financer Name*</label>
-                                <input type="text" class="form-control form-control-sm"
-                                    value="OM SRI SHANMUKHA FINANCE">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">From Date (DD-MMM-YYYY)*</label>
-                                <input type="text" class="form-control form-control-sm" value="12-Nov-2025">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">House No. & Street Name*</label>
-                                <input type="text" class="form-control form-control-sm" value="8-4-56 BALAJIRAOPET">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Village/Town/City*</label>
-                                <input type="text" class="form-control form-control-sm" value="TENALI">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Landmark/Police Station</label>
-                                <input type="text" class="form-control form-control-sm"
-                                    value="VYSHNAVI COLLAGE BACK SIDE">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">State*</label>
-                                <select class="form-select form-select-sm">
-                                    <option>Andhra Pradesh</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">District*</label>
-                                <select class="form-select form-select-sm">
-                                    <option>Guntur</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">PIN Code*</label>
-                                <input type="text" class="form-control form-control-sm" value="522201">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sanction Amount -->
-                    <div class="mb-3">
-                        <label class="form-label">sanction Amount*</label>
-                        <input type="text" class="form-control form-control-sm"
-                            placeholder="ENTER SANCTION AMOUNT HERE...">
-                    </div>
+            <!-- Hypothecation Details Table -->
+            <div class="form-section mb-3">
+                <div class="form-section-title text-center">Hypothecation Details</div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm">
+                        <thead>
+                            <tr>
+                                <th>Sr.No</th>
+                                <th>Type</th>
+                                <th>Financer</th>
+                                <th>Address</th>
+                                <th>From</th>
+                                <th>Parent Id</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td>Hypothecation</td>
+                                <td>BALAJI AUTOFINANCE FIN007 00000322018</td>
+                                <td>#14-1-23, MORRIES PET, TENALI,TENALI,, Andhra Pradesh - 522202</td>
+                                <td>08-OCT-2025</td>
+                                <td>FIN007000003220 18</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -1526,77 +1405,6 @@
                 });
             }
 
-            // Hypothecation Type Dropdown 1 Search Functionality
-            const hypothecationSearchInput = document.getElementById('hypothecationSearchInput');
-            const hypothecationDropdown = document.getElementById('hypothecationDropdown');
-            const hypothecationDropdownMenu = document.getElementById('hypothecationDropdownMenu');
-            const hypothecationDropdownItems = hypothecationDropdownMenu ? hypothecationDropdownMenu.querySelectorAll('.dropdown-item') : [];
-            const hypothecationSearchButton = hypothecationDropdownMenu ? hypothecationDropdownMenu.querySelector('.dropdown-search-btn') : null;
-
-            function filterHypothecationItems(inputId, menuId, buttonId) {
-                const searchInput = document.getElementById(inputId);
-                const dropdownMenu = document.getElementById(menuId);
-                const dropdownButton = document.getElementById(buttonId);
-                const dropdownItems = dropdownMenu ? dropdownMenu.querySelectorAll('.dropdown-item') : [];
-
-                if (searchInput && dropdownItems.length > 0) {
-                    function filterItems() {
-                        const searchTerm = searchInput.value.toLowerCase().trim();
-
-                        dropdownItems.forEach(item => {
-                            const itemText = item.textContent.toLowerCase().trim();
-                            const listItem = item.closest('li');
-
-                            if (itemText.includes(searchTerm)) {
-                                listItem.style.display = '';
-                            } else {
-                                listItem.style.display = 'none';
-                            }
-                        });
-                    }
-
-                    searchInput.addEventListener('input', filterItems);
-
-                    searchInput.addEventListener('click', function (e) {
-                        e.stopPropagation();
-                    });
-
-                    const searchBtn = dropdownMenu ? dropdownMenu.querySelector('.dropdown-search-btn') : null;
-                    if (searchBtn) {
-                        searchBtn.addEventListener('click', function (e) {
-                            e.stopPropagation();
-                            searchInput.focus();
-                            filterItems();
-                        });
-                    }
-
-                    // Update selected item
-                    dropdownItems.forEach(item => {
-                        item.addEventListener('click', function (e) {
-                            e.preventDefault();
-                            dropdownItems.forEach(i => i.classList.remove('active'));
-                            this.classList.add('active');
-                            const text = this.textContent.trim();
-                            if (dropdownButton) {
-                                dropdownButton.textContent = text;
-                            }
-
-                            // Clear search input when item is selected
-                            if (searchInput) {
-                                searchInput.value = '';
-                                dropdownItems.forEach(dropdownItem => {
-                                    const listItem = dropdownItem.closest('li');
-                                    listItem.style.display = '';
-                                });
-                            }
-                        });
-                    });
-                }
-            }
-
-            // Initialize both dropdowns
-            filterHypothecationItems('hypothecationSearchInput', 'hypothecationDropdownMenu', 'hypothecationDropdown');
-            filterHypothecationItems('hypothecationSearchInput2', 'hypothecationDropdownMenu2', 'hypothecationDropdown2');
         });
     </script>
 </body>
