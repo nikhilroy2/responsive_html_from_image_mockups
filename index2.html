@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINANCIER AMOUNT APPROVE - e-Vahan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Bootstrap Primary Color Override */
+        :root {
+            --bs-primary: #029EDA;
+            --bs-primary-rgb: 2, 158, 218;
+            --bs-primary-border-subtle: #029EDA;
+        }
+
+        .btn-primary {
+            --bs-btn-bg: #029EDA;
+            --bs-btn-border-color: #029EDA;
+            --bs-btn-hover-bg: #0284c4;
+            --bs-btn-hover-border-color: #0284c4;
+            --bs-btn-active-bg: #0284c4;
+            --bs-btn-active-border-color: #0284c4;
+        }
+
+        .btn-outline-primary {
+            --bs-btn-color: #029EDA;
+            --bs-btn-border-color: #029EDA;
+            --bs-btn-hover-bg: #029EDA;
+            --bs-btn-hover-border-color: #029EDA;
+            --bs-btn-active-bg: #029EDA;
+            --bs-btn-active-border-color: #029EDA;
+        }
+
+        .border-primary {
+            border-color: #029EDA !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            font-size: 14px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #029EDA;
+            color: white;
+            padding: 0;
+            min-height: 50px;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-national-emblem {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo-evahan {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-links>li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: bold;
+        }
+
+        .nav-links a svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-links .dropdown-menu {
+            background-color: white;
+            border: 1px solid #ced4da;
+            margin-top: 5px;
+            padding: 0;
+        }
+
+        .nav-links .dropdown-item {
+            color: #333;
+            font-size: 14px;
+            padding: 8px 15px;
+        }
+
+        .nav-links .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .dropdown-toggle::after {
+            margin-left: 5px;
+            border-top: 4px solid;
+            border-right: 4px solid transparent;
+            border-bottom: 0;
+            border-left: 4px solid transparent;
+        }
+
+        .welcome-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-left: auto;
+        }
+
+        .welcome-text {
+            font-size: 14px;
+        }
+
+        .logout-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .logout-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 20px;
+        }
+
+        .form-title {
+            background-color: #b3d9ff;
+            padding: 12px 15px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .form-section {
+            background-color: white;
+            border: 2px solid #029EDA;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-section-title {
+            background-color: #b3d9ff;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 15px;
+            color: #000;
+            margin: -20px -20px 15px -20px;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .form-label {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .form-control, .form-select {
+            font-size: 14px;
+        }
+
+        .alert-info-custom {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .alert-danger-custom {
+            background-color: #f8d7da;
+            border: 1px solid #dc3545;
+            color: #721c24;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .nav-tabs .nav-link {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #029EDA;
+            color: white;
+            border-color: #029EDA;
+        }
+
+        .sanction-amount-input {
+            border: 2px dashed #029EDA;
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn-action {
+            padding: 8px 30px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container-fluid header-container">
+            <div class="logo-section">
+                <img src="images/logo-national-emblem.png" alt="National Emblem" class="logo-img logo-national-emblem">
+                <img src="images/logo-evahan.png" alt="e-Vahan" class="logo-img logo-evahan">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li>
+                        <a href="#">
+                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+                            Home
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27zM19 14.9 14.9 19H9.1L5 14.9V9.1L9.1 5h5.8L19 9.1z"></path><path d="M11 7h2v6h-2zm0 8h2v2h-2z"></path></svg>
+                            Report
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Report 1</a></li>
+                            <li><a class="dropdown-item" href="#">Report 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"></path></svg>
+                            Update Profile
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profile Settings</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39"></path></svg>
+                            Language
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">English</a></li>
+                            <li><a class="dropdown-item" href="#">Hindi</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="welcome-section">
+                <span class="welcome-text">Welcome VYSHALD, ADMINISTRATIVE OFFICER, Andhra Pradesh</span>
+                <a href="#" class="logout-link">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container-fluid py-4">
+        <div class="form-title">FINANCIER AMOUNT APPROVE</div>
+
+        <!-- Application No -->
+        <div class="mb-3">
+            <label class="form-label">Application No</label>
+            <input type="text" class="form-control" value="AP251112V6362770" readonly>
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs mb-3" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="owner-tab" data-bs-toggle="tab" data-bs-target="#owner" type="button" role="tab">Owner Details</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="vehicle-tab" data-bs-toggle="tab" data-bs-target="#vehicle" type="button" role="tab">Vehicle Details</button>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- Owner Details Tab -->
+            <div class="tab-pane fade show active" id="owner" role="tabpanel">
+                <!-- Registration Information -->
+                <div class="form-section">
+                    <div class="form-section-title">Registration Information</div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Registration No</label>
+                            <input type="text" class="form-control" value="AP07 TC5860">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">State</label>
+                            <input type="text" class="form-control" value="Andhra Pradesh">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Office</label>
+                            <input type="text" class="form-control" value="Guntur RTA">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Owner Information -->
+                <div class="form-section">
+                    <div class="form-section-title">Owner Information</div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Registration Type</label>
+                            <input type="text" class="form-control" value="NEW">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Purchase/Delivery Date</label>
+                            <input type="text" class="form-control" value="03-Nov-2012">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Owner Name</label>
+                            <input type="text" class="form-control" value="KISHORE">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Son/Wife/Daughter of</label>
+                            <input type="text" class="form-control" value="POTHURAJ">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Ownership Serial</label>
+                            <input type="text" class="form-control" value="1">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Registration Valid Upto</label>
+                            <input type="text" class="form-control" value="06-Nov-2026">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Registration Date</label>
+                            <input type="text" class="form-control" value="03-Nov-2012">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Ownership Type</label>
+                            <input type="text" class="form-control" value="INDIVIDUAL">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Fitness Valid Upto</label>
+                            <input type="text" class="form-control" value="06-Nov-2026">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Owner Identification/Contacts Details -->
+                <div class="form-section">
+                    <div class="form-section-title">Owner Identification/Contacts Details</div>
+                    <div class="alert-danger-custom">
+                        Please Enter Valid Mobile No because It is Used for Sending Essential Information and Getting Feedback of the Service from Owner
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Mobile No</label>
+                            <input type="text" class="form-control" value="9160212062">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Aadhaar No</label>
+                            <input type="text" class="form-control" value="NULL">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">PAN No</label>
+                            <input type="text" class="form-control" value="NA">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Ration Card No</label>
+                            <input type="text" class="form-control" value="007P260323">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Voter ID</label>
+                            <input type="text" class="form-control" value="">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email ID</label>
+                            <input type="text" class="form-control" value="NA">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Passport No</label>
+                            <input type="text" class="form-control" value="">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">DL/LL No</label>
+                            <input type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Address -->
+                <div class="form-section">
+                    <div class="form-section-title">Current Address</div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">House No. & Street Name</label>
+                            <input type="text" class="form-control" value="31-16-20">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Village/Town/City</label>
+                            <input type="text" class="form-control" value="SULTANABAD, TENALI">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Landmark/Police Station</label>
+                            <input type="text" class="form-control" value="TENALI">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">State</label>
+                            <input type="text" class="form-control" value="Andhra Pradesh">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">District</label>
+                            <input type="text" class="form-control" value="Guntur">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Pin</label>
+                            <input type="text" class="form-control" value="522202">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permanent Address -->
+                <div class="form-section">
+                    <div class="form-section-title">Permanent Address</div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">House No. & Street Name</label>
+                            <input type="text" class="form-control" value="31-16-20,">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Village/Town/City</label>
+                            <input type="text" class="form-control" value="SULTANABAD, TENALI">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Landmark/Police Station</label>
+                            <input type="text" class="form-control" value="GUNTUR">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">State</label>
+                            <input type="text" class="form-control" value="Andhra Pradesh">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">District</label>
+                            <input type="text" class="form-control" value="Guntur">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Pin</label>
+                            <input type="text" class="form-control" value="999999">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hypothecation Information -->
+                <div class="form-section">
+                    <div class="form-section-title">Hypothecation Information</div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Hypothecation Type</label>
+                            <select class="form-select">
+                                <option>-SELECT-</option>
+                                <option>Hire-Purchase</option>
+                                <option>Hypothecation</option>
+                                <option>Lease Agreement</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Financer Name</label>
+                            <input type="text" class="form-control" value="OM SRI SHANMUKHA FINANCE">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Village/Town/City</label>
+                            <input type="text" class="form-control" value="TENALI">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">District</label>
+                            <input type="text" class="form-control" value="Guntur">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">From Date (DD-MMM-YYYY)</label>
+                            <input type="text" class="form-control" value="12-Nov-2025">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Landmark/Police Station</label>
+                            <input type="text" class="form-control" value="VYSHNAVI COLLAGE BACK SIDE">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">PIN Code</label>
+                            <input type="text" class="form-control" value="522201">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sanction Amount -->
+                <div class="form-section">
+                    <label class="form-label">ENTER SANCTION AMOUNT HERE...</label>
+                    <input type="text" class="form-control sanction-amount-input" placeholder="Enter Amount">
+                </div>
+            </div>
+
+            <!-- Vehicle Details Tab -->
+            <div class="tab-pane fade" id="vehicle" role="tabpanel">
+                <!-- Vehicle Information -->
+                <div class="form-section">
+                    <div class="form-section-title">Vehicle Information</div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Maker</label>
+                            <input type="text" class="form-control" value="PIAGGIO VEHICLES PVT LTD">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Maker Model</label>
+                            <input type="text" class="form-control" value="APE XTRA LD BSIII">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Dealer</label>
+                            <input type="text" class="form-control" value="RAMCOR">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Chassis No</label>
+                            <input type="text" class="form-control" value="MBX0000ZBPH560002">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Vehicle Type</label>
+                            <input type="text" class="form-control" value="Transport">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Vehicle Class</label>
+                            <input type="text" class="form-control" value="Three Wheeler (Goods)">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Vehicle Category</label>
+                            <input type="text" class="form-control" value="3WT">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Norms</label>
+                            <input type="text" class="form-control" value="BHARAT STAGE III">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Engine/Motor No</label>
+                            <input type="text" class="form-control" value="R2H2185335">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Seating Capacity</label>
+                            <input type="text" class="form-control" value="1">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Standing Capacity</label>
+                            <input type="text" class="form-control" value="0">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Sleeper Capacity</label>
+                            <input type="text" class="form-control" value="0">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">No of Cylinders</label>
+                            <input type="text" class="form-control" value="1">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Unladen Weight (Kg.)</label>
+                            <input type="text" class="form-control" value="438">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Laden Weight (Kg.)</label>
+                            <input type="text" class="form-control" value="975">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Horse Power(BHP)</label>
+                            <input type="text" class="form-control" value="5.0">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Fuel</label>
+                            <input type="text" class="form-control" value="DIESEL">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Purchase As</label>
+                            <input type="text" class="form-control" value="Fully Built">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Color</label>
+                            <input type="text" class="form-control" value="G.YELLOW">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Wheelbase</label>
+                            <input type="text" class="form-control" value="2100">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Cubic Capacity</label>
+                            <input type="text" class="form-control" value="436.0">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Floor Area(sqm)</label>
+                            <input type="text" class="form-control" value="0.0">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">AC Fitted</label>
+                            <input type="text" class="form-control" value="N">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Audio Fitted</label>
+                            <input type="text" class="form-control" value="N">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Video Fitted</label>
+                            <input type="text" class="form-control" value="N">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Manufacture Month</label>
+                            <input type="text" class="form-control" value="8">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Manufacture Year</label>
+                            <input type="text" class="form-control" value="2012">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Laser Code</label>
+                            <input type="text" class="form-control" value="">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Length(mm)</label>
+                            <input type="text" class="form-control" value="3145">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Width(mm)</label>
+                            <input type="text" class="form-control" value="0">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Height(mm)</label>
+                            <input type="text" class="form-control" value="1490">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Garage Address</label>
+                            <input type="text" class="form-control" value="SALE_AMT_UBULK_240425">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Sale Amount</label>
+                            <input type="text" class="form-control" value="170000">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Annual Income</label>
+                            <input type="text" class="form-control" value="0">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Other Criteria</label>
+                            <input type="text" class="form-control" value="0">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Imported Vehicle</label>
+                            <input type="text" class="form-control" value="N">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Body Type</label>
+                            <input type="text" class="form-control" value="Open">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Sale Amount with GST</label>
+                            <input type="text" class="form-control" value="0">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Sale Amount without GST</label>
+                            <input type="text" class="form-control" value="0">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Gross Combination Weight(Including trailer weight)</label>
+                            <input type="text" class="form-control" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Axle Details -->
+                <div class="form-section">
+                    <div class="form-section-title">Axle Details</div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">No Of Axle's</label>
+                            <input type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Number Description and Size of Tyres</label>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Front*</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Front_tyre*</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Other</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Other_tyre</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Rear*</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Rear_tyre*</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Tandem</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Tandem_tyre</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Rear Overhang(mm)</label>
+                            <input type="text" class="form-control" value="0">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Registered Axle Weight(kg)</label>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Front*</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Rear*</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Other</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Tandem</label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hypothecation Information -->
+                <div class="form-section">
+                    <div class="form-section-title">Hypothecation Information</div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Hypothecation Type</label>
+                            <select class="form-select">
+                                <option>-SELECT-</option>
+                                <option>Hire-Purchase</option>
+                                <option>Hypothecation</option>
+                                <option>Lease Agreement</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Financer Name*</label>
+                            <input type="text" class="form-control" value="OM SRI SHANMUKHA FINANCE">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">From Date (DD-MMM-YYYY)*</label>
+                            <input type="text" class="form-control" value="12-Nov-2025">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">House No. & Street Name*</label>
+                            <input type="text" class="form-control" value="8-4-56 BALAJIRAOPET">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Village/Town/City*</label>
+                            <input type="text" class="form-control" value="TENALI">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Landmark/Police Station</label>
+                            <input type="text" class="form-control" value="VYSHNAVI COLLAGE BACK SIDE">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">State*</label>
+                            <select class="form-select">
+                                <option>Andhra Pradesh</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">District*</label>
+                            <select class="form-select">
+                                <option>Guntur</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">PIN Code*</label>
+                            <input type="text" class="form-control" value="522201">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sanction Amount -->
+                <div class="form-section">
+                    <label class="form-label">sanction Amount*</label>
+                    <input type="text" class="form-control sanction-amount-input" placeholder="ENTER SANCTION AMOUNT HERE...">
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn btn-primary btn-action">Save</button>
+            <button class="btn btn-outline-primary btn-action">Back</button>
+            <button class="btn btn-outline-primary btn-action">Reset</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
