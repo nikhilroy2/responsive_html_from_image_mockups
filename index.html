@@ -45,7 +45,26 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #fff;
-            font-size: 14px;
+            font-size: 16px;
+        }
+
+        .dropdown-toggle-before {
+            overflow: hidden;
+
+        }
+
+        .dropdown-toggle-before::after {
+            z-index: 1;
+        }
+
+        .dropdown-toggle-before::before {
+            content: '';
+            width: 43px;
+            height: 29px;
+            background: #C7DFF7;
+            position: absolute;
+            right: 1px;
+            border-radius: 0 5px 5px 0;
         }
 
         /* Header Styles */
@@ -56,7 +75,13 @@
             min-height: 50px;
         }
 
-        .header-container {
+        .header .navbar {
+            background-color: #029EDA;
+            padding: 0px 0;
+            position: relative;
+        }
+
+        .header .navbar .container-fluid {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -68,6 +93,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            margin-left: -12px;
         }
 
         .logo-img {
@@ -86,43 +112,86 @@
             width: auto;
         }
 
+        .navbar-toggler {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 4px 8px;
+            position: relative;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            display: inline-block;
+        }
+
+        .navbar-toggler-close {
+            display: none;
+            width: 24px;
+            height: 24px;
+        }
+
+        .navbar-toggler-close svg {
+            width: 100%;
+            height: 100%;
+            stroke: white;
+        }
+
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+            display: none;
+        }
+
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-close {
+            display: inline-block;
+        }
+
+        @media (min-width: 992px) {
+            .navbar-toggler {
+                display: none;
+            }
+        }
+
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 15px;
             list-style: none;
             margin: 0;
             padding: 0;
             flex-wrap: wrap;
         }
 
-        .nav-links>li {
+        @media (max-width: 1399px) {
+            .nav-links {
+                gap: 0px;
+            }
+        }
+
+        .nav-links .nav-item {
             position: relative;
         }
 
-        .nav-links a {
-            color: white;
+        .nav-links .nav-link {
+            color: white !important;
             text-decoration: none;
             font-size: 16px;
             display: flex;
             align-items: center;
             gap: 6px;
             font-weight: bold;
+            padding: 8px 12px;
         }
 
-        .nav-links a svg {
+        .nav-links .nav-link svg,
+        .logout-link svg {
             width: 20px;
             height: 20px;
             flex-shrink: 0;
         }
 
-        .nav-links a svg.dropdown-arrow {
-            width: 12px;
-            height: 12px;
-            margin-left: 2px;
-        }
-
-        .nav-links a:hover {
+        .nav-links .nav-link:hover {
             text-decoration: underline;
         }
 
@@ -161,6 +230,21 @@
 
         .welcome-text {
             font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .welcome-section-mobile {
+            padding: 10px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+
+        .welcome-text-mobile {
+            font-size: 12px;
+            color: #000;
+            line-height: 1.4;
+            word-wrap: break-word;
+            padding: 0 10px;
         }
 
         .logout-link {
@@ -168,6 +252,9 @@
             text-decoration: none;
             font-size: 16px;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .logout-link:hover {
@@ -183,7 +270,7 @@
         /* Upper Content Area - Using Bootstrap grid */
 
         .user-profile-btn {
-            background-color: #dc3545;
+            background-color: #AB4341;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -210,14 +297,14 @@
             display: flex;
             align-items: stretch;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
+            border-radius: 0px;
             overflow: hidden;
         }
 
         .registration-label-section {
             background-color: #079EE8;
             color: white;
-            padding: 12px 15px;
+            padding: 7px 15px;
             display: flex;
             align-items: center;
             font-size: 14px;
@@ -227,13 +314,14 @@
 
         .registration-input {
             flex: 1;
-            padding: 12px 15px;
+            padding: 7px 15px;
             border: 1px solid #ced4da;
             border-left: none;
             border-radius: 0;
             font-size: 14px;
             background-color: white;
             min-width: 200px;
+            font-size: 16px;
         }
 
         .registration-input:focus {
@@ -249,8 +337,8 @@
         }
 
         .complaint-portal {
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -291,9 +379,8 @@
             padding: 5px 20px;
             border-radius: 4px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 900;
             cursor: pointer;
-            font-weight: bold;
         }
 
         .btn-outline-prime:hover {
@@ -314,21 +401,20 @@
             background-color: white;
             border-radius: 4px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+
         }
 
         .panel-header {
-            background-color: #b3d9ff;
-            padding: 12px 15px;
+            background-color: #C7DFF7;
+            padding: 6px 15px;
             font-weight: bold;
-            font-size: 15px;
-            color: #000;
-            border-bottom: 1px solid #dee2e6;
+            font-size: 16px;
+
         }
 
         .panel-body {
             padding: 20px;
-            max-width: 500px;
+            max-width: 75%;
         }
 
         .form-group {
@@ -336,21 +422,10 @@
         }
 
         .form-group label {
-            display: block;
             margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: normal;
-            color: #333;
         }
 
-        .form-control,
-        .form-select {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            font-size: 14px;
-        }
+
 
         .dropdown-menu {
             border: 1px solid #ced4da;
@@ -360,25 +435,27 @@
         }
 
         .dropdown-item {
-            padding: 8px 15px;
+            padding: 4px 15px;
             font-size: 14px;
             cursor: pointer;
             display: flex;
             align-items: center;
+            border: 1px solid transparent;
         }
 
         .dropdown-item:hover {
             background-color: #f8f9fa;
         }
 
-        .dropdown-item.active {
-            background-color: #b3d9ff;
-            color: #000;
+        .dropdown-item.active,
+        .dropdown-item:hover {
+            background-color: #d0ebff;
+            color: #333;
+            border-radius: 5px;
+            border: 1px solid #079EE8;
         }
 
-        .dropdown-item.active:hover {
-            background-color: #b3d9ff;
-        }
+
 
         .dropdown-header {
             padding: 8px 15px;
@@ -390,20 +467,32 @@
         }
 
         .dropdown-search-btn {
-            background-color: #90ee90;
+            background-color: #C5FFC5;
             border: none;
             padding: 6px 12px;
             border-radius: 4px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-left: 8px;
             cursor: pointer;
+            flex-shrink: 0;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
         }
+
 
         .dropdown-search-btn svg {
             width: 16px;
             height: 16px;
+            fill: #000;
+        }
+
+        #actionDropdownMenu .form-control-sm {
+            font-size: 14px;
+            padding: 4px 8px;
         }
 
         .dropdown-item svg {
@@ -462,7 +551,6 @@
 
         .form-check-label {
             margin: 0;
-            font-size: 14px;
             cursor: pointer;
         }
 
@@ -485,7 +573,7 @@
 
         .app-number-part input {
             width: 100%;
-            padding: 8px 12px;
+
             border: 1px solid #ced4da;
             border-radius: 4px;
             font-size: 14px;
@@ -495,6 +583,7 @@
         .action-buttons {
             display: flex;
             gap: 10px;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -520,9 +609,61 @@
         }
 
         /* Mobile dropdown adjustments */
-        @media (max-width: 767.98px) {
-            .dropdown {
-                position: static !important;
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                position: absolute !important;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background-color: white;
+                padding: 15px;
+                border-radius: 4px;
+                margin-top: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            .navbar-collapse .nav-links .nav-link {
+                color: #000 !important;
+            }
+
+            .navbar-collapse .nav-links .nav-link svg {
+                fill: #000;
+            }
+
+            .navbar-collapse .nav-links .nav-link:hover {
+                color: #029EDA !important;
+            }
+
+            .navbar-collapse .nav-links .nav-link:hover svg {
+                fill: #029EDA;
+            }
+
+            .nav-links .nav-item.dropdown {
+                position: relative;
+            }
+
+            .nav-links .dropdown-menu {
+                position: absolute !important;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                margin-top: 0;
+                background-color: white;
+                border: 1px solid #ced4da;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            .nav-links .dropdown-item {
+                color: #333;
+                padding: 10px 20px;
+            }
+
+            .nav-links .dropdown-item:hover {
+                background-color: #f8f9fa;
             }
         }
 
@@ -563,9 +704,9 @@
 
         /* Extra Small devices (phones, 576px and down) */
         @media (max-width: 575.98px) {
-            .header-container {
-                flex-direction: column;
-                align-items: flex-start;
+            .header .navbar .container-fluid {
+                flex-direction: row;
+                align-items: center;
             }
 
             .logo-img {
@@ -580,24 +721,40 @@
                 height: 30px;
             }
 
-            .nav-links {
-                gap: 15px;
+            .navbar-collapse {
+                margin-top: 15px;
                 width: 100%;
             }
 
-            .nav-links a {
-                font-size: 13px;
-            }
-
-            .welcome-section {
+            .nav-links {
+                gap: 0;
                 width: 100%;
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 10px;
             }
 
-            .welcome-text {
-                font-size: 12px;
+            .nav-links .nav-item {
+                width: 100%;
+            }
+
+            .nav-links .nav-link {
+                font-size: 14px;
+                width: 100%;
+                padding: 12px 15px;
+            }
+
+            .welcome-section.d-lg-none {
+                margin: 0;
+                padding: 0;
+                border: none;
+                display: flex;
+                align-items: center;
+            }
+
+            .welcome-section.d-lg-none .logout-link {
+                font-size: 14px;
+                padding: 8px 12px;
+                white-space: nowrap;
             }
 
 
@@ -664,13 +821,23 @@
 
         /* Small devices (landscape phones, 576px and up) */
         @media (min-width: 576px) and (max-width: 767.98px) {
-
-            .nav-links {
-                gap: 20px;
+            .navbar-collapse {
+                margin-top: 15px;
+                width: 100%;
             }
 
-            .welcome-text {
-                font-size: 13px;
+            .nav-links {
+                gap: 15px;
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .nav-links .nav-link {
+                font-size: 15px;
+            }
+
+            .welcome-section.d-lg-none .logout-link {
+                font-size: 15px;
             }
 
 
@@ -694,7 +861,6 @@
 
         /* Medium devices (tablets, 768px and up) */
         @media (min-width: 768px) and (max-width: 991.98px) {
-
             .logo-img {
                 height: 40px;
             }
@@ -708,7 +874,17 @@
             }
 
             .nav-links {
-                gap: 22px;
+                gap: 20px;
+            }
+
+            .nav-links .nav-link {
+                font-size: 15px;
+            }
+
+            .welcome-text {
+                font-size: 12px;
+                white-space: normal;
+                max-width: 200px;
             }
 
             .main-content {
@@ -725,20 +901,50 @@
         }
 
         /* Large devices (desktops, 992px and up) */
-        @media (min-width: 992px) and (max-width: 1199.98px) {
+        @media (min-width: 992px) {
+            .navbar-collapse {
+                display: flex !important;
+                flex-basis: auto;
+            }
 
+            .nav-links {
+                flex-wrap: nowrap;
+            }
+
+            .welcome-section {
+                margin-left: auto;
+            }
+
+            .welcome-text {
+                font-size: 13px;
+                white-space: normal;
+                max-width: 300px;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1399px) {
             .lower-content {
                 gap: 20px;
+            }
+
+            .welcome-text {
+                font-size: 12px;
+                max-width: 250px;
             }
         }
 
         /* Extra large devices (large desktops, 1200px and up) */
-        @media (min-width: 1200px) {
+        @media (min-width: 1400px) {
 
             .lower-content {
                 gap: 20px;
             }
 
+            .welcome-text {
+                font-size: 14px;
+                white-space: nowrap;
+                max-width: none;
+            }
 
             .logo-img {
                 height: 50px;
@@ -800,58 +1006,113 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <div class="container-fluid header-container">
-            <div class="logo-section">
-                <img src="images/logo-national-emblem.png" alt="National Emblem" class="logo-img logo-national-emblem">
-                <img src="images/logo-evahan.png" alt="e-Vahan" class="logo-img logo-evahan">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <div class="logo-section">
+                    <img src="images/logo-national-emblem.png" alt="National Emblem"
+                        class="logo-img logo-national-emblem">
+                    <img src="images/logo-evahan.png" alt="e-Vahan" class="logo-img logo-evahan">
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="welcome-section d-lg-none">
+                        <a href="#" class="logout-link">
+                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+                                <path
+                                    d="m17 7-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4z">
+                                </path>
+                            </svg>
+                            Logout</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-close">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav nav-links me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg class="" fill="currentColor" focusable="false" aria-hidden="true"
+                                    viewBox="0 0 24 24">
+                                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+                                </svg>
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="reportDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg class="" fill="currentColor" focusable="false" aria-hidden="true"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27zM19 14.9 14.9 19H9.1L5 14.9V9.1L9.1 5h5.8L19 9.1z">
+                                    </path>
+                                    <path d="M11 7h2v6h-2zm0 8h2v2h-2z"></path>
+                                </svg>
+                                Report
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="reportDropdown">
+                                <li><a class="dropdown-item" href="#">Report 1</a></li>
+                                <li><a class="dropdown-item" href="#">Report 2</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg class="" fill="currentColor" focusable="false" aria-hidden="true"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4">
+                                    </path>
+                                </svg>
+                                Update Profile
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                                <li><a class="dropdown-item" href="#">Profile Settings</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg class="" fill="currentColor" focusable="false" aria-hidden="true"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39">
+                                    </path>
+                                </svg>
+                                Language
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                <li><a class="dropdown-item" href="#">English</a></li>
+                                <li><a class="dropdown-item" href="#">Hindi</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="welcome-section d-none d-lg-flex">
+                        <span class="welcome-text fw-bold">Welcome VY SHALD, ADMINISTRATIVE OFFICER, Andhra
+                            Pradesh</span>
+                        <a href="#" class="logout-link">
+                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+                                <path
+                                    d="m17 7-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4z">
+                                </path>
+                            </svg>
+                            Logout</a>
+                    </div>
+                    <div class="welcome-section-mobile d-lg-none w-100">
+                        <div class="welcome-text-mobile fw-bold text-center mb-2">Welcome VY SHALD, ADMINISTRATIVE
+                            OFFICER, Andhra Pradesh</div>
+                    </div>
+                </div>
             </div>
-            <nav>
-                <ul class="nav-links">
-                    <li>
-                        <a href="#">
-                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
-                            Home
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27zM19 14.9 14.9 19H9.1L5 14.9V9.1L9.1 5h5.8L19 9.1z"></path><path d="M11 7h2v6h-2zm0 8h2v2h-2z"></path></svg>
-                            Report
-                            
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Report 1</a></li>
-                            <li><a class="dropdown-item" href="#">Report 2</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"></path></svg>
-                            Update Profile
-                            
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Profile Settings</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39"></path></svg>
-                            Language
-                            
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">English</a></li>
-                            <li><a class="dropdown-item" href="#">Hindi</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <div class="welcome-section">
-                <span class="welcome-text">Welcome VY SHALD, ADMINISTRATIVE OFFICER, Andhra Pradesh</span>
-                <a href="#" class="logout-link">Logout</a>
-            </div>
-        </div>
+        </nav>
     </header>
 
     <!-- Main Content -->
@@ -878,8 +1139,8 @@
             <div class="col-12">
                 <div class="d-flex flex-column gap-3">
 
-                    <div class="registration-bar">
-                        <div class="registration-label-section">Current Running Registration No:</div>
+                    <div class="registration-bar border border-primary">
+                        <div class="registration-label-section fs-bold">Current Running Registration No:</div>
                         <input type="text" class="registration-input" placeholder="">
                     </div>
                 </div>
@@ -895,47 +1156,58 @@
         <div class="lower-content">
             <!-- Left Panel -->
             <div class="panel border border-primary p-1">
-                <div class="panel-header">Select Assigned Office & Action</div>
+                <div class="panel-header rounded border border-primary">Select Assigned Office & Action</div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label class="fw-bold">Select Assigned Office:</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="">
-                            <button class="btn btn-outline-secondary" type="button">
+                        <label class="fw-bold form-label">Select Assigned Office:</label>
+                        <div class="input-group border border-primary rounded">
+                            <input type="text" class="form-control form-control-sm" placeholder="">
+                            <div class="input-group-text" style="background-color: #DCEEFA; ">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                     <path d="M8 11L3 6h10L8 11z" />
                                 </svg>
-                            </button>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="fw-bold">Select Action:</label>
-                        <div class="d-flex align-items-center">
-                            <div class="dropdown flex-grow-1" style="position: relative;">
-                                <button class="btn btn-secondary dropdown-toggle w-100 text-start" type="button"
-                                    id="actionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Financier-Amount-Approve
-                                </button>
-                                <ul class="dropdown-menu w-100" id="actionDropdownMenu" aria-labelledby="actionDropdown">
-                                    <li><h6 class="dropdown-header mb-0">Select Action</h6></li>
-                                    <li><a class="dropdown-item active" href="#">
-                                            <svg viewBox="0 0 16 16" fill="currentColor">
-                                                <path
-                                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                            </svg>
-                                            Financier-Amount-Approve
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="#">Financier-Approve-HPC</a></li>
-                                    <li><a class="dropdown-item" href="#">Financier-Hypothecation-Termination</a></li>
-                                    <li><a class="dropdown-item" href="#">ISSUE OF FRC-ENTRY-SCRUTINY</a></li>
-                                </ul>
-                            </div>
-                            <button class="dropdown-search-btn" type="button" title="Search">
-                                <svg viewBox="0 0 16 16" fill="currentColor">
-                                    <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                </svg>
+                        <div class="dropdown" style="position: relative;">
+                            <button
+                                class="btn btn-secondary bg-white text-dark  fw-bold border border-primary dropdown-toggle dropdown-toggle-before w-100 text-start"
+                                type="button" id="actionDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="display: flex; align-items: center; justify-content: space-between; height: 31px;">
+                                Financier-Amount-Approve
                             </button>
+                            <ul class="dropdown-menu w-100 px-2" id="actionDropdownMenu"
+                                aria-labelledby="actionDropdown">
+                                <li class="px-3 py-2" onclick="event.stopPropagation()">
+                                    <div class="d-flex align-items-center gap-2 position-relative"
+                                    style="max-width: 300px;">
+                                    <input type="text" class="form-control form-control-sm" id="actionSearchInput"
+                                    placeholder="Search..." style="flex: 1; background-color: #C5FFC5;">
+                                    <button class="dropdown-search-btn" type="button" title="Search"
+                                    onclick="event.stopPropagation()">
+                                    <svg viewBox="0 0 16 16" fill="currentColor">
+                                        <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li>
+                            <h6 class="dropdown-header mb-0">Select Action</h6>
+                        </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item active" href="#">
+                                        
+                                        Financier-Amount-Approve
+                                    </a></li>
+                                <li><a class="dropdown-item" href="#">Financier-Approve-HPC</a></li>
+                                <li><a class="dropdown-item" href="#">Financier-Hypothecation-Termination</a></li>
+                                <li><a class="dropdown-item" href="#">ISSUE OF FRC-ENTRY-SCRUTINY</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -943,32 +1215,37 @@
 
             <!-- Right Panel -->
             <div class="panel border border-primary p-1">
-                <div class="panel-header">Get Pending Work</div>
+                <div class="panel-header rounded border border-primary">Get Pending Work</div>
                 <div class="panel-body mx-auto">
                     <div class="radio-group">
                         <div class="row g-3">
                             <div class="col-6">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pendingWork" id="applicationNo" checked>
-                                    <label class="fw-bold text-nowrap form-check-label" for="applicationNo">Application No</label>
+                                    <input class="form-check-input" type="radio" name="pendingWork" id="applicationNo"
+                                        checked>
+                                    <label class="fw-bold text-nowrap form-check-label" for="applicationNo">Application
+                                        No</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pendingWork" id="oldSoftware">
-                                    <label class="fw-bold text-nowrap form-check-label" for="oldSoftware">Old Software Appl No</label>
+                                    <label class="fw-bold text-nowrap form-check-label" for="oldSoftware">Old Software
+                                        Appl No</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pendingWork" id="registrationNo">
-                                    <label class="fw-bold text-nowrap form-check-label" for="registrationNo">Registration No</label>
+                                    <label class="fw-bold text-nowrap form-check-label"
+                                        for="registrationNo">Registration No</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pendingWork" id="pendingApps">
-                                    <label class="fw-bold text-nowrap form-check-label" for="pendingApps">Pending Applications</label>
+                                    <label class="fw-bold text-nowrap form-check-label" for="pendingApps">Pending
+                                        Applications</label>
                                 </div>
                             </div>
                         </div>
@@ -978,11 +1255,13 @@
                         <div class="app-number-group">
                             <div class="app-number-part">
                                 <label class="fw-bold text-danger">Part 1 (First Six Chars)</label>
-                                <input type="text" class="form-control" value="AP2511">
+                                <input type="text" class="form-control form-control-sm border border-primary"
+                                    value="AP2511">
                             </div>
                             <div class="app-number-part">
                                 <label class="fw-bold text-danger">Part 2 (Next Ten Chars)</label>
-                                <input type="text" class="form-control" placeholder="">
+                                <input type="text" class="form-control form-control-sm border border-primary"
+                                    placeholder="">
                             </div>
                         </div>
                     </div>
@@ -1002,6 +1281,45 @@
             const actionDropdown = document.getElementById('actionDropdown');
             const actionDropdownMenu = document.getElementById('actionDropdownMenu');
 
+            // Search functionality
+            const actionSearchInput = document.getElementById('actionSearchInput');
+            const dropdownItems = actionDropdownMenu.querySelectorAll('.dropdown-item');
+            const searchButton = actionDropdownMenu.querySelector('.dropdown-search-btn');
+
+            function filterDropdownItems() {
+                const searchTerm = actionSearchInput.value.toLowerCase().trim();
+
+                dropdownItems.forEach(item => {
+                    const itemText = item.textContent.toLowerCase().trim();
+                    const listItem = item.closest('li');
+
+                    if (itemText.includes(searchTerm)) {
+                        listItem.style.display = '';
+                    } else {
+                        listItem.style.display = 'none';
+                    }
+                });
+            }
+
+            if (actionSearchInput) {
+                actionSearchInput.addEventListener('input', filterDropdownItems);
+
+                // Prevent dropdown from closing when clicking on search input
+                actionSearchInput.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+            }
+
+            if (searchButton) {
+                searchButton.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    if (actionSearchInput) {
+                        actionSearchInput.focus();
+                        filterDropdownItems();
+                    }
+                });
+            }
+
             // Update selected item
             actionDropdownMenu.querySelectorAll('.dropdown-item').forEach(item => {
                 item.addEventListener('click', function (e) {
@@ -1010,8 +1328,32 @@
                     this.classList.add('active');
                     const text = this.textContent.trim();
                     actionDropdown.textContent = text;
+
+                    // Clear search input when item is selected
+                    if (actionSearchInput) {
+                        actionSearchInput.value = '';
+                        // Show all items again
+                        dropdownItems.forEach(dropdownItem => {
+                            const listItem = dropdownItem.closest('li');
+                            listItem.style.display = '';
+                        });
+                    }
                 });
             });
+
+            // Handle navbar toggle button state
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.getElementById('navbarNav');
+
+            if (navbarToggler && navbarCollapse) {
+                navbarCollapse.addEventListener('show.bs.collapse', function () {
+                    navbarToggler.setAttribute('aria-expanded', 'true');
+                });
+
+                navbarCollapse.addEventListener('hide.bs.collapse', function () {
+                    navbarToggler.setAttribute('aria-expanded', 'false');
+                });
+            }
         });
     </script>
 </body>
