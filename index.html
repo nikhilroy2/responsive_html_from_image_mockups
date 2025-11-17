@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Vahan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Bootstrap Primary Color Override */
+        :root {
+            --bs-primary: #029EDA;
+            --bs-primary-rgb: 2, 158, 218;
+            --bs-primary-border-subtle: #029EDA;
+        }
+
+        .btn-primary {
+            --bs-btn-bg: #029EDA;
+            --bs-btn-border-color: #029EDA;
+            --bs-btn-hover-bg: #0284c4;
+            --bs-btn-hover-border-color: #0284c4;
+            --bs-btn-active-bg: #0284c4;
+            --bs-btn-active-border-color: #0284c4;
+        }
+
+        .btn-outline-primary {
+            --bs-btn-color: #029EDA;
+            --bs-btn-border-color: #029EDA;
+            --bs-btn-hover-bg: #029EDA;
+            --bs-btn-hover-border-color: #029EDA;
+            --bs-btn-active-bg: #029EDA;
+            --bs-btn-active-border-color: #029EDA;
+        }
+
+        .border-primary {
+            border-color: #029EDA !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            font-size: 14px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #029EDA;
+            color: white;
+            padding: 0;
+            min-height: 50px;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-national-emblem {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo-evahan {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-links>li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: bold;
+        }
+
+        .nav-links a svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .nav-links a svg.dropdown-arrow {
+            width: 12px;
+            height: 12px;
+            margin-left: 2px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-links .dropdown-menu {
+            background-color: white;
+            border: 1px solid #ced4da;
+            margin-top: 5px;
+            padding: 0;
+        }
+
+        .nav-links .dropdown-item {
+            color: #333;
+            font-size: 14px;
+            padding: 8px 15px;
+        }
+
+        .nav-links .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .dropdown-toggle::after {
+            margin-left: 5px;
+            border-top: 4px solid;
+            border-right: 4px solid transparent;
+            border-bottom: 0;
+            border-left: 4px solid transparent;
+        }
+
+        .welcome-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-left: auto;
+        }
+
+        .welcome-text {
+            font-size: 14px;
+        }
+
+        .logout-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .logout-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content - Using Bootstrap container */
+        .container.py-4 {
+            border: 2px solid #029EDA;
+            border-radius: 4px;
+        }
+
+        /* Upper Content Area - Using Bootstrap grid */
+
+        .user-profile-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            cursor: pointer;
+        }
+
+        .user-profile-btn:hover {
+            background-color: #c82333;
+        }
+
+        .user-profile-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .registration-bar {
+            width: 100%;
+            display: flex;
+            align-items: stretch;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .registration-label-section {
+            background-color: #079EE8;
+            color: white;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .registration-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ced4da;
+            border-left: none;
+            border-radius: 0;
+            font-size: 14px;
+            background-color: white;
+            min-width: 200px;
+        }
+
+        .registration-input:focus {
+            outline: none;
+            border-color: #ced4da;
+        }
+
+        .complaint-portal-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .complaint-portal {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .complaint-portal svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .complaint-label {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        .view-issues-btn {
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .view-issues-btn:hover {
+            background-color: #0b5ed7;
+        }
+
+        .btn-outline-prime {
+            background-color: #e7f5ff;
+            color: #333;
+            border: 1px solid #079EE8;
+            padding: 5px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-outline-prime:hover {
+            background-color: #d0ebff;
+            border-color: #079EE8;
+            color: #333;
+        }
+
+        /* Lower Content Area */
+        .lower-content {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .panel {
+            flex: 1;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            background-color: #b3d9ff;
+            padding: 12px 15px;
+            font-weight: bold;
+            font-size: 15px;
+            color: #000;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .panel-body {
+            padding: 20px;
+            max-width: 500px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: normal;
+            color: #333;
+        }
+
+        .form-control,
+        .form-select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .dropdown-menu {
+            border: 1px solid #ced4da;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 0;
+            margin-top: 2px;
+        }
+
+        .dropdown-item {
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .dropdown-item.active {
+            background-color: #b3d9ff;
+            color: #000;
+        }
+
+        .dropdown-item.active:hover {
+            background-color: #b3d9ff;
+        }
+
+        .dropdown-header {
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .dropdown-search-btn {
+            background-color: #90ee90;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 8px;
+            cursor: pointer;
+        }
+
+        .dropdown-search-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .dropdown-item svg {
+            margin-right: 8px;
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Radio Buttons - Custom Styling */
+        .radio-group {
+            margin-bottom: 20px;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-check-input {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            margin-top: 0;
+            border: 2px solid #079EE8;
+            background-color: transparent;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .form-check-input:checked {
+            background-color: transparent;
+            border-color: #079EE8;
+        }
+
+        .form-check-input:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #1e40af;
+        }
+
+        .form-check-input:focus {
+            box-shadow: none;
+            border-color: #079EE8;
+        }
+
+        .form-check-label {
+            margin: 0;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* Application Number Inputs */
+        .app-number-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .app-number-part {
+            flex: 1;
+        }
+
+        .app-number-part label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .app-number-part input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        /* Mobile dropdown adjustments */
+        @media (max-width: 767.98px) {
+            .dropdown {
+                position: static !important;
+            }
+        }
+
+        /* Input group styling */
+        .input-group .btn {
+            border-left: 0;
+        }
+
+        .input-group .form-control {
+            border-right: 0;
+        }
+
+        .input-group .form-control:focus {
+            border-right: 0;
+            border-color: #ced4da;
+            box-shadow: none;
+        }
+
+        .input-group .btn-outline-secondary {
+            border-color: #ced4da;
+        }
+
+        .input-group .btn-outline-secondary:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Dropdown button styling */
+        .btn-secondary.dropdown-toggle {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary.dropdown-toggle:hover {
+            background-color: #5a6268;
+        }
+
+        /* Responsive Design - Mobile First Approach */
+
+        /* Extra Small devices (phones, 576px and down) */
+        @media (max-width: 575.98px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .logo-img {
+                height: 35px;
+            }
+
+            .logo-national-emblem {
+                height: 35px;
+            }
+
+            .logo-evahan {
+                height: 30px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                width: 100%;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .welcome-section {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .welcome-text {
+                font-size: 12px;
+            }
+
+
+            .user-profile-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .registration-bar {
+                flex-direction: column;
+            }
+
+            .registration-label-section {
+                width: 100%;
+            }
+
+            .registration-input {
+                width: 100%;
+                min-width: 100%;
+                border-left: 1px solid #ced4da;
+            }
+
+            .complaint-portal {
+                width: 70px;
+                height: 70px;
+            }
+
+            .view-issues-btn {
+                width: 100%;
+            }
+
+            .lower-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .panel {
+                width: 100%;
+            }
+
+            .panel-body {
+                padding: 15px;
+            }
+
+
+            .app-number-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .action-buttons .btn {
+                width: 100%;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Small devices (landscape phones, 576px and up) */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .welcome-text {
+                font-size: 13px;
+            }
+
+
+            .registration-bar {
+                flex-wrap: nowrap;
+            }
+
+            .lower-content {
+                gap: 15px;
+            }
+
+            .panel-body {
+                padding: 15px;
+            }
+
+
+            .app-number-group {
+                gap: 12px;
+            }
+        }
+
+        /* Medium devices (tablets, 768px and up) */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+
+            .logo-img {
+                height: 40px;
+            }
+
+            .logo-national-emblem {
+                height: 40px;
+            }
+
+            .logo-evahan {
+                height: 35px;
+            }
+
+            .nav-links {
+                gap: 22px;
+            }
+
+            .main-content {
+                padding: 18px;
+            }
+
+            .lower-content {
+                gap: 18px;
+            }
+
+            .panel-body {
+                padding: 18px;
+            }
+        }
+
+        /* Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+
+            .lower-content {
+                gap: 20px;
+            }
+        }
+
+        /* Extra large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {
+
+            .lower-content {
+                gap: 20px;
+            }
+
+
+            .logo-img {
+                height: 50px;
+            }
+
+            .logo-national-emblem {
+                height: 50px;
+            }
+
+            .logo-evahan {
+                height: 45px;
+            }
+        }
+
+        /* Touch-friendly sizes for mobile */
+        @media (max-width: 767.98px) {
+
+            .btn,
+            button {
+                min-height: 44px;
+                padding: 10px 20px;
+            }
+
+            .form-control,
+            .form-select,
+            .app-number-part input {
+                min-height: 44px;
+                font-size: 16px;
+                /* Prevents zoom on iOS */
+            }
+
+            .registration-input {
+                font-size: 14px;
+                /* Keep smaller for registration bar */
+            }
+
+            .dropdown-item {
+                min-height: 44px;
+                padding: 12px 15px;
+            }
+
+            .form-check-input {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        /* Smooth transitions for responsive changes */
+        .header-container,
+        .nav-links,
+        .lower-content,
+        .panel,
+        .registration-bar {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container-fluid header-container">
+            <div class="logo-section">
+                <img src="images/logo-national-emblem.png" alt="National Emblem" class="logo-img logo-national-emblem">
+                <img src="images/logo-evahan.png" alt="e-Vahan" class="logo-img logo-evahan">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li>
+                        <a href="#">
+                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+                            Home
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27zM19 14.9 14.9 19H9.1L5 14.9V9.1L9.1 5h5.8L19 9.1z"></path><path d="M11 7h2v6h-2zm0 8h2v2h-2z"></path></svg>
+                            Report
+                            
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Report 1</a></li>
+                            <li><a class="dropdown-item" href="#">Report 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"></path></svg>
+                            Update Profile
+                            
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profile Settings</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39"></path></svg>
+                            Language
+                            
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">English</a></li>
+                            <li><a class="dropdown-item" href="#">Hindi</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="welcome-section">
+                <span class="welcome-text">Welcome VY SHALD, ADMINISTRATIVE OFFICER, Andhra Pradesh</span>
+                <a href="#" class="logout-link">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container-fluid py-4 my-4">
+        <!-- Upper Content Area -->
+        <div class="row g-3 mb-3 justify-content-between">
+            <div class="col-auto">
+                <button class="user-profile-btn">
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                    </svg>
+                    User Profile
+                </button>
+            </div>
+            <div class="col-auto">
+                <div class="complaint-portal-wrapper">
+                    <div class="complaint-portal">
+                        <img src="images/portal.png" alt="Complaint Portal"
+                            style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="d-flex flex-column gap-3">
+
+                    <div class="registration-bar">
+                        <div class="registration-label-section">Current Running Registration No:</div>
+                        <input type="text" class="registration-input" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="d-flex justify-content-end align-items-center gap-3">
+                    <button class="btn-outline-prime">View/Resolve <br> Pending Issues</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lower Content Area -->
+        <div class="lower-content">
+            <!-- Left Panel -->
+            <div class="panel border border-primary p-1">
+                <div class="panel-header">Select Assigned Office & Action</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="fw-bold">Select Assigned Office:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="">
+                            <button class="btn btn-outline-secondary" type="button">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 11L3 6h10L8 11z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Select Action:</label>
+                        <div class="d-flex align-items-center">
+                            <div class="dropdown flex-grow-1" style="position: relative;">
+                                <button class="btn btn-secondary dropdown-toggle w-100 text-start" type="button"
+                                    id="actionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Financier-Amount-Approve
+                                </button>
+                                <ul class="dropdown-menu w-100" id="actionDropdownMenu" aria-labelledby="actionDropdown">
+                                    <li><h6 class="dropdown-header mb-0">Select Action</h6></li>
+                                    <li><a class="dropdown-item active" href="#">
+                                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                                <path
+                                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                            </svg>
+                                            Financier-Amount-Approve
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="#">Financier-Approve-HPC</a></li>
+                                    <li><a class="dropdown-item" href="#">Financier-Hypothecation-Termination</a></li>
+                                    <li><a class="dropdown-item" href="#">ISSUE OF FRC-ENTRY-SCRUTINY</a></li>
+                                </ul>
+                            </div>
+                            <button class="dropdown-search-btn" type="button" title="Search">
+                                <svg viewBox="0 0 16 16" fill="currentColor">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="panel border border-primary p-1">
+                <div class="panel-header">Get Pending Work</div>
+                <div class="panel-body mx-auto">
+                    <div class="radio-group">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pendingWork" id="applicationNo" checked>
+                                    <label class="fw-bold text-nowrap form-check-label" for="applicationNo">Application No</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pendingWork" id="oldSoftware">
+                                    <label class="fw-bold text-nowrap form-check-label" for="oldSoftware">Old Software Appl No</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pendingWork" id="registrationNo">
+                                    <label class="fw-bold text-nowrap form-check-label" for="registrationNo">Registration No</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pendingWork" id="pendingApps">
+                                    <label class="fw-bold text-nowrap form-check-label" for="pendingApps">Pending Applications</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Application No:</label>
+                        <div class="app-number-group">
+                            <div class="app-number-part">
+                                <label class="fw-bold text-danger">Part 1 (First Six Chars)</label>
+                                <input type="text" class="form-control" value="AP2511">
+                            </div>
+                            <div class="app-number-part">
+                                <label class="fw-bold text-danger">Part 2 (Next Ten Chars)</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-outline-prime">Get Pending Work</button>
+                        <button class="btn-outline-prime">Pull Back Application</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Handle dropdown selection
+        document.addEventListener('DOMContentLoaded', function () {
+            const actionDropdown = document.getElementById('actionDropdown');
+            const actionDropdownMenu = document.getElementById('actionDropdownMenu');
+
+            // Update selected item
+            actionDropdownMenu.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    actionDropdownMenu.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    const text = this.textContent.trim();
+                    actionDropdown.textContent = text;
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
