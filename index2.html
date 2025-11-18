@@ -736,6 +736,84 @@
             gap: 8px;
         }
 
+        /* Confirmation Modal Styles */
+        .confirmation-modal {
+            border-radius: 8px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .confirmation-header {
+            background-color: #B3D9FF;
+            border-bottom: none;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .confirmation-header .modal-title {
+            color: #000;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .confirmation-header .btn-close {
+            opacity: 1;
+            filter: brightness(0);
+        }
+
+        .confirmation-body {
+            padding: 30px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .warning-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            color: #000;
+        }
+
+        .confirmation-body h4 {
+            color: #000;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .confirmation-btn-yes,
+        .confirmation-btn-no {
+            background-color: #e7f5ff;
+            color: #333;
+            border: 1px solid #079EE8;
+            padding: 5px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 900;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            min-width: 80px;
+            gap: 8px;
+        }
+
+        .confirmation-btn-yes:hover,
+        .confirmation-btn-no:hover {
+            background-color: #d0ebff;
+            border-color: #079EE8;
+            color: #333;
+        }
+
+        .confirmation-btn-yes svg,
+        .confirmation-btn-no svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
         .btn-outline-prime:hover {
             background-color: #d0ebff;
             border-color: #079EE8;
@@ -1550,14 +1628,84 @@
 
             <!-- Action Buttons -->
             <div class="action-buttons p-2">
-                <button class="btn-outline-prime">Save</button>
+                <button class="btn-outline-prime" id="saveBtn">Save</button>
                 <button class="btn-outline-prime">
                     <svg viewBox="0 0 16 16" fill="currentColor">
                         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                     </svg>
                     Back
                 </button>
-                <button class="btn-outline-prime">Reset</button>
+                <button class="btn-outline-prime" id="resetBtn">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Confirmation Dialog Modal -->
+    <div class="modal fade" id="saveConfirmationModal" tabindex="-1" aria-labelledby="saveConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content confirmation-modal">
+                <div class="modal-header confirmation-header">
+                    <h5 class="modal-title" id="saveConfirmationModalLabel">Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body confirmation-body">
+                    <div class="d-flex align-items-center justify-content-center gap-3 mb-4">
+                        <svg class="warning-icon" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+                            <path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27zM19 14.9 14.9 19H9.1L5 14.9V9.1L9.1 5h5.8L19 9.1z"></path>
+                            <path d="M11 7h2v6h-2zm0 8h2v2h-2z"></path>
+                        </svg>
+                        <h4 class="mb-0">Are you sure to save?</h4>
+                    </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button type="button" class="confirmation-btn-yes" id="confirmSaveYesBtn">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                            </svg>
+                            Yes
+                        </button>
+                        <button type="button" class="confirmation-btn-no" id="confirmSaveNoBtn" data-bs-dismiss="modal">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                            </svg>
+                            No
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset Confirmation Dialog Modal -->
+    <div class="modal fade" id="resetConfirmationModal" tabindex="-1" aria-labelledby="resetConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content confirmation-modal">
+                <div class="modal-header confirmation-header">
+                    <h5 class="modal-title" id="resetConfirmationModalLabel">Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body confirmation-body">
+                    <div class="d-flex align-items-center justify-content-center gap-3 mb-4">
+                        <svg class="warning-icon" fill="currentColor" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+                            <path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27zM19 14.9 14.9 19H9.1L5 14.9V9.1L9.1 5h5.8L19 9.1z"></path>
+                            <path d="M11 7h2v6h-2zm0 8h2v2h-2z"></path>
+                        </svg>
+                        <h4 class="mb-0">Are you sure to reset?</h4>
+                    </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button type="button" class="confirmation-btn-yes" id="confirmResetYesBtn">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                            </svg>
+                            Yes
+                        </button>
+                        <button type="button" class="confirmation-btn-no" id="confirmResetNoBtn" data-bs-dismiss="modal">
+                            <svg viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                            </svg>
+                            No
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1616,6 +1764,52 @@
 
                 navbarCollapse.addEventListener('hide.bs.collapse', function () {
                     navbarToggler.setAttribute('aria-expanded', 'false');
+                });
+            }
+
+            // Confirmation Modal Handling - Separate modals for Save and Reset
+            const saveConfirmationModal = new bootstrap.Modal(document.getElementById('saveConfirmationModal'));
+            const resetConfirmationModal = new bootstrap.Modal(document.getElementById('resetConfirmationModal'));
+            const saveBtn = document.getElementById('saveBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const confirmSaveYesBtn = document.getElementById('confirmSaveYesBtn');
+            const confirmResetYesBtn = document.getElementById('confirmResetYesBtn');
+
+            // Show save confirmation modal when Save button is clicked
+            if (saveBtn) {
+                saveBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    saveConfirmationModal.show();
+                });
+            }
+
+            // Show reset confirmation modal when Reset button is clicked
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    resetConfirmationModal.show();
+                });
+            }
+
+            // Handle Save Yes button click
+            if (confirmSaveYesBtn) {
+                confirmSaveYesBtn.addEventListener('click', function() {
+                    // Perform save action here
+                    console.log('Save confirmed');
+                    // Add your save logic here
+                    alert('Data saved successfully!');
+                    saveConfirmationModal.hide();
+                });
+            }
+
+            // Handle Reset Yes button click
+            if (confirmResetYesBtn) {
+                confirmResetYesBtn.addEventListener('click', function() {
+                    // Perform reset action here
+                    console.log('Reset confirmed');
+                    // Add your reset logic here (e.g., reset form fields)
+                    alert('Form reset successfully!');
+                    resetConfirmationModal.hide();
                 });
             }
 
