@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FINANCIER AMOUNT APPROVE - e-Vahan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         /* Bootstrap Primary Color Override */
         :root {
@@ -1155,7 +1156,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">From Date (DD-MMM-YYYY) <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-sm border border-primary" value="12-Nov-2025">
+                                    <input type="text" class="form-control form-control-sm border border-primary date-picker" id="fromDate1" value="12-Nov-2025" placeholder="DD-MMM-YYYY">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">House No. & Street Name <span class="text-danger">*</span></label>
@@ -1503,7 +1504,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">From Date (DD-MMM-YYYY) <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-sm border border-primary" value="12-Nov-2025">
+                                    <input type="text" class="form-control form-control-sm border border-primary date-picker" id="fromDate1" value="12-Nov-2025" placeholder="DD-MMM-YYYY">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">House No. & Street Name <span class="text-danger">*</span></label>
@@ -1562,9 +1563,49 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        // Handle navbar toggle button state
+        // Initialize date picker and handle navbar toggle
         document.addEventListener('DOMContentLoaded', function () {
+            // Initialize date picker for From Date fields
+            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            
+            flatpickr(".date-picker", {
+                dateFormat: "d-M-Y",
+                allowInput: true,
+                clickOpens: true,
+                parseDate: (datestr, format) => {
+                    // Parse DD-MMM-YYYY format
+                    const parts = datestr.split('-');
+                    if (parts.length === 3) {
+                        const day = parseInt(parts[0]);
+                        const monthIndex = monthNames.indexOf(parts[1]);
+                        const year = parseInt(parts[2]);
+                        if (monthIndex !== -1 && !isNaN(day) && !isNaN(year)) {
+                            return new Date(year, monthIndex, day);
+                        }
+                    }
+                    return null;
+                },
+                formatDate: (date, format) => {
+                    // Format to DD-MMM-YYYY
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const month = monthNames[date.getMonth()];
+                    const year = date.getFullYear();
+                    return `${day}-${month}-${year}`;
+                },
+                onChange: function(selectedDates, dateStr, instance) {
+                    // Update input with formatted date in DD-MMM-YYYY format
+                    if (selectedDates.length > 0) {
+                        const day = String(selectedDates[0].getDate()).padStart(2, '0');
+                        const month = monthNames[selectedDates[0].getMonth()];
+                        const year = selectedDates[0].getFullYear();
+                        instance.input.value = `${day}-${month}-${year}`;
+                    }
+                }
+            });
+
+            // Handle navbar toggle button state
             const navbarToggler = document.querySelector('.navbar-toggler');
             const navbarCollapse = document.getElementById('navbarNav');
 
