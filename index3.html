@@ -291,9 +291,20 @@
                 z-index: 1000;
             }
 
+            .nav-links .dropdown-menu.report-menu{
+                width: 225px;
+            }
+
             .nav-links .dropdown-item {
                 color: #333;
                 padding: 10px 20px;
+                display: flex;
+                align-items: center;
+            }
+
+            .nav-links .dropdown-item svg {
+                margin-right: 8px;
+                flex-shrink: 0;
             }
 
             .nav-links .dropdown-item:hover {
@@ -556,6 +567,7 @@
 
         .form-control:read-only {
             background-color: #dddddc !important;
+            color: #202B23;
         }
 
         .registration-header {
@@ -696,12 +708,6 @@
             font-weight: bold;
         }
 
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-        }
 
         .btn-action {
             padding: 8px 30px;
@@ -812,9 +818,31 @@
                                 </svg>
                                 Report
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="reportDropdown">
-                                <li><a class="dropdown-item" href="#">Report 1</a></li>
-                                <li><a class="dropdown-item" href="#">Report 2</a></li>
+                            <ul class="dropdown-menu report-menu" aria-labelledby="reportDropdown">
+                                <li><a class="dropdown-item" href="#">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+                                        <path d="M2 6h7v4H2V6zm7.0371-1.9572 4 4-4 4V7.7468z"/>
+                                    </svg>
+                                    Application Status
+                                </a></li>
+                                <li><a class="dropdown-item" href="#">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+                                        <path d="M2 6h7v4H2V6zm7.0371-1.9572 4 4-4 4V7.7468z"/>
+                                    </svg>
+                                    Registered Vehicle Details
+                                </a></li>
+                                <li><a class="dropdown-item" href="#">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+                                        <path d="M2 6h7v4H2V6zm7.0371-1.9572 4 4-4 4V7.7468z"/>
+                                    </svg>
+                                    Collection Summary
+                                </a></li>
+                                <li><a class="dropdown-item" href="#">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+                                        <path d="M2 6h7v4H2V6zm7.0371-1.9572 4 4-4 4V7.7468z"/>
+                                    </svg>
+                                    Financier Details
+                                </a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -878,8 +906,8 @@
         <!-- Application No -->
         <div class="border border-primary mb-3 p-2 rounded">
             <div class="d-flex flex-column  mx-auto" style="max-width: 400px;">
-                <label class="form-label">Application No<span class="text-danger">*</span></label>
-                <input type="text" class="form-control form-control-sm application-no-input" value="AP251112V6362770"
+                <label class="form-label">Application No <span class="text-danger">*</span></label>
+                <input type="text" class="form-control form-control-sm border border-primary application-no-input" value="AP251112V6362770"
                     readonly>
             </div>
         </div>
@@ -915,47 +943,47 @@
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <label class="form-label">Registration Type</label>
-                                <input type="text" class="form-control form-control-sm owner-info-input" value="NEW"
+                                <input type="text" class="form-control form-control-sm border border-primary owner-info-input" value="NEW"
                                     readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Purchase/Delivery Date</label>
-                                <input type="text" class="form-control form-control-sm owner-info-input"
+                                <input type="text" class="form-control form-control-sm border border-primary owner-info-input"
                                     value="16-May-2014" readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Registration Date</label>
-                                <input type="text" class="form-control form-control-sm owner-info-input"
+                                <input type="text" class="form-control form-control-sm border border-primary owner-info-input"
                                     value="16-May-2014" readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Owner Name</label>
-                                <input type="text" class="form-control form-control-sm owner-info-input" value="SHAIK SHABHEER"
+                                <input type="text" class="form-control form-control-sm border border-primary owner-info-input" value="SHAIK SHABHEER"
                                     readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Son/Wife/Daughter of</label>
-                                <input type="text" class="form-control form-control-sm owner-info-input"
+                                <input type="text" class="form-control form-control-sm border border-primary owner-info-input"
                                     value="SHAIK MASTAN" readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Ownership Type</label>
-                                <input type="text" class="form-control form-control-sm owner-info-input"
+                                <input type="text" class="form-control form-control-sm border border-primary owner-info-input"
                                     value="INDIVIDUAL" readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Ownership Serial</label>
-                                <input type="text" class="form-control form-control-sm owner-info-input" value="2"
+                                <input type="text" class="form-control form-control-sm border border-primary owner-info-input" value="2"
                                     readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Registration Valid Upto</label>
-                                <input type="text" class="form-control form-control-sm owner-info-input"
+                                <input type="text" class="form-control form-control-sm border border-primary owner-info-input"
                                     value="25-Sep-2026" readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Fitness Valid Upto</label>
-                                <input type="text" class="form-control form-control-sm owner-info-input"
+                                <input type="text" class="form-control form-control-sm border border-primary owner-info-input"
                                     value="25-Sep-2026" readonly>
                             </div>
                         </div>
@@ -971,39 +999,39 @@
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <label class="form-label">PAN No</label>
-                                    <input type="text" class="form-control form-control-sm" value="NA">
+                                    <input type="text" class="form-control form-control-sm border border-primary" value="NA">
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label">Mobile No<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-sm" value="9573292651">
+                                    <label class="form-label">Mobile No <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm border border-primary" value="9573292651">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Email ID</label>
-                                    <input type="text" class="form-control form-control-sm" value="">
+                                    <input type="text" class="form-control form-control-sm border border-primary" value="">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Ration Card No</label>
-                                    <input type="text" class="form-control form-control-sm" value="INC8220724">
+                                    <input type="text" class="form-control form-control-sm border border-primary" value="INC8220724">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Aadhaar No</label>
-                                    <input type="text" class="form-control form-control-sm" value="NULL" readonly
+                                    <input type="text" class="form-control form-control-sm border border-primary" value="NULL" readonly
                                         style="background-color: #e9ecef;">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Passport No</label>
-                                    <input type="text" class="form-control form-control-sm" value="NA" readonly
+                                    <input type="text" class="form-control form-control-sm border border-primary" value="NA" readonly
                                         style="background-color: #e9ecef;">
                                 </div>
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4">
                                     <label class="form-label">Voter ID</label>
-                                    <input type="text" class="form-control form-control-sm" value="NA" readonly
+                                    <input type="text" class="form-control form-control-sm border border-primary" value="NA" readonly
                                         style="background-color: #e9ecef;">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">DL/LL No</label>
-                                    <input type="text" class="form-control form-control-sm" value="NA" readonly
+                                    <input type="text" class="form-control form-control-sm border border-primary" value="NA" readonly
                                         style="background-color: #e9ecef;">
                                 </div>
                             </div>
@@ -1019,32 +1047,32 @@
                                     <div class="row g-3">
                                         <div class="col-6">
                                             <label class="form-label">House No. & Street Name</label>
-                                            <input type="text" class="form-control form-control-sm" value="18-8-6 MASEED ROAD ISLAMPET"
+                                            <input type="text" class="form-control form-control-sm border border-primary" value="18-8-6 MASEED ROAD ISLAMPET"
                                                 readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Village/Town/City</label>
-                                            <input type="text" class="form-control form-control-sm"
+                                            <input type="text" class="form-control form-control-sm border border-primary"
                                                 value="TENALI" readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Landmark/Police Station</label>
-                                            <input type="text" class="form-control form-control-sm" value=""
+                                            <input type="text" class="form-control form-control-sm border border-primary" value=""
                                                 readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">State</label>
-                                            <input type="text" class="form-control form-control-sm"
+                                            <input type="text" class="form-control form-control-sm border border-primary"
                                                 value="Andhra Pradesh" readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">District</label>
-                                            <input type="text" class="form-control form-control-sm" value="Guntur"
+                                            <input type="text" class="form-control form-control-sm border border-primary" value="Guntur"
                                                 readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Pin</label>
-                                            <input type="text" class="form-control form-control-sm" value="522201"
+                                            <input type="text" class="form-control form-control-sm border border-primary" value="522201"
                                                 readonly>
                                         </div>
                                     </div>
@@ -1058,32 +1086,32 @@
                                     <div class="row g-3">
                                         <div class="col-6">
                                             <label class="form-label">House No. & Street Name</label>
-                                            <input type="text" class="form-control form-control-sm" value="18-8-6 MASEED ROAD TENALI ISLAM PE"
+                                            <input type="text" class="form-control form-control-sm border border-primary" value="18-8-6 MASEED ROAD TENALI ISLAM PE"
                                                 readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Village/Town/City</label>
-                                            <input type="text" class="form-control form-control-sm"
+                                            <input type="text" class="form-control form-control-sm border border-primary"
                                                 value="A" readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Landmark/Police Station</label>
-                                            <input type="text" class="form-control form-control-sm" value=""
+                                            <input type="text" class="form-control form-control-sm border border-primary" value=""
                                                 readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">State</label>
-                                            <input type="text" class="form-control form-control-sm"
+                                            <input type="text" class="form-control form-control-sm border border-primary"
                                                 value="Andhra Pradesh" readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">District</label>
-                                            <input type="text" class="form-control form-control-sm" value="Guntur"
+                                            <input type="text" class="form-control form-control-sm border border-primary" value="Guntur"
                                                 readonly>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Pin</label>
-                                            <input type="text" class="form-control form-control-sm" value="522201"
+                                            <input type="text" class="form-control form-control-sm border border-primary" value="522201"
                                                 readonly>
                                         </div>
                                     </div>
@@ -1099,166 +1127,166 @@
                     <div class="form-section">
                         <div class="form-section-title">Vehicle Information</div>
                         <div class="row g-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Maker</label>
-                                <input type="text" class="form-control form-control-sm"
+                                <input type="text" class="form-control form-control-sm border border-primary"
                                     value="PIAGGIO VEHICLES PVT LTD" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Maker Model</label>
-                                <input type="text" class="form-control form-control-sm" value="APE XTRA LD BSIII" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="APE XTRA LD BSIII" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Dealer</label>
-                                <input type="text" class="form-control form-control-sm" value="RAMCOR" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="RAMCOR" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Chassis No</label>
-                                <input type="text" class="form-control form-control-sm" value="MBX0000ZBPH560002" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="MBX0000ZBPH560002" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Vehicle Type</label>
-                                <input type="text" class="form-control form-control-sm" value="Transport" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="Transport" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Vehicle Class</label>
-                                <input type="text" class="form-control form-control-sm" value="Three Wheeler (Goods)" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="Three Wheeler (Goods)" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Vehicle Category</label>
-                                <input type="text" class="form-control form-control-sm" value="3WT" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="3WT" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Norms</label>
-                                <input type="text" class="form-control form-control-sm" value="BHARAT STAGE III" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="BHARAT STAGE III" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Engine/Motor No</label>
-                                <input type="text" class="form-control form-control-sm" value="R2H2185335" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="R2H2185335" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Seating Capacity</label>
-                                <input type="text" class="form-control form-control-sm" value="1" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="1" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Standing Capacity</label>
-                                <input type="text" class="form-control form-control-sm" value="0" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="0" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Sleeper Capacity</label>
-                                <input type="text" class="form-control form-control-sm" value="0" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="0" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">No of Cylinders</label>
-                                <input type="text" class="form-control form-control-sm" value="1" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="1" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Unladen Weight (Kg.)</label>
-                                <input type="text" class="form-control form-control-sm" value="438" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="438" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Laden Weight (Kg.)</label>
-                                <input type="text" class="form-control form-control-sm" value="975" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="975" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Horse Power(BHP)</label>
-                                <input type="text" class="form-control form-control-sm" value="5.0" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="5.0" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Fuel</label>
-                                <input type="text" class="form-control form-control-sm" value="DIESEL" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="DIESEL" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Purchase As</label>
-                                <input type="text" class="form-control form-control-sm" value="Fully Built" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="Fully Built" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Color</label>
-                                <input type="text" class="form-control form-control-sm" value="G.YELLOW" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="G.YELLOW" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Wheelbase</label>
-                                <input type="text" class="form-control form-control-sm" value="2100" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="2100" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Cubic Capacity</label>
-                                <input type="text" class="form-control form-control-sm" value="436.0" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="436.0" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Floor Area(sqm)</label>
-                                <input type="text" class="form-control form-control-sm" value="0.0" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="0.0" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">AC Fitted</label>
-                                <input type="text" class="form-control form-control-sm" value="N" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="N" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Audio Fitted</label>
-                                <input type="text" class="form-control form-control-sm" value="N" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="N" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Video Fitted</label>
-                                <input type="text" class="form-control form-control-sm" value="N" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="N" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Manufacture Month</label>
-                                <input type="text" class="form-control form-control-sm" value="8" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="8" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Manufacture Year</label>
-                                <input type="text" class="form-control form-control-sm" value="2012" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="2012" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Laser Code</label>
-                                <input type="text" class="form-control form-control-sm" value="" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Length(mm)</label>
-                                <input type="text" class="form-control form-control-sm" value="3145" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="3145" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Width(mm)</label>
-                                <input type="text" class="form-control form-control-sm" value="0" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="0" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Height(mm)</label>
-                                <input type="text" class="form-control form-control-sm" value="1490" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="1490" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Garage Address</label>
-                                <input type="text" class="form-control form-control-sm" value="SALE_AMT_UBULK_240425" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="SALE_AMT_UBULK_240425" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Sale Amount</label>
-                                <input type="text" class="form-control form-control-sm" value="170000" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="170000" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Annual Income</label>
-                                <input type="text" class="form-control form-control-sm" value="0" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="0" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Other Criteria</label>
-                                <input type="text" class="form-control form-control-sm" value="0" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="0" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Imported Vehicle</label>
-                                <input type="text" class="form-control form-control-sm" value="N" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="N" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Body Type</label>
-                                <input type="text" class="form-control form-control-sm" value="Open" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="Open" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Sale Amount with GST</label>
-                                <input type="text" class="form-control form-control-sm" value="0" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="0" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Sale Amount without GST</label>
-                                <input type="text" class="form-control form-control-sm" value="0" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="0" readonly>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Gross Combination Weight(Including trailer weight)</label>
-                                <input type="text" class="form-control form-control-sm" value="0" readonly>
+                                <input type="text" class="form-control form-control-sm border border-primary" value="0" readonly>
                             </div>
                         </div>
 
@@ -1268,7 +1296,7 @@
                             <div class="row g-3 mb-3">
                                 <div class="col-md-6">
                                     <label class="form-label">No Of Axle's</label>
-                                    <input type="text" class="form-control form-control-sm" value="">
+                                    <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                 </div>
                             </div>
 
@@ -1277,36 +1305,36 @@
                                 <div class="form-section-child-child-title">Number Description and Size of Tyres</div>
                                 <div class="row g-3">
                                     <div class="col-md-3">
-                                        <label class="form-label">Front*</label>
-                                        <input type="text" class="form-control form-control-sm" value="">
+                                        <label class="form-label">Front <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="form-label">Front_tyre*</label>
-                                        <input type="text" class="form-control form-control-sm" value="">
+                                        <label class="form-label">Front_tyre <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Other</label>
-                                        <input type="text" class="form-control form-control-sm" value="">
+                                        <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Other_tyre</label>
-                                        <input type="text" class="form-control form-control-sm" value="">
+                                        <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="form-label">Rear*</label>
-                                        <input type="text" class="form-control form-control-sm" value="">
+                                        <label class="form-label">Rear <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="form-label">Rear_tyre*</label>
-                                        <input type="text" class="form-control form-control-sm" value="">
+                                        <label class="form-label">Rear_tyre <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Tandem</label>
-                                        <input type="text" class="form-control form-control-sm" value="">
+                                        <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Tandem_tyre</label>
-                                        <input type="text" class="form-control form-control-sm" value="">
+                                        <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -1314,7 +1342,7 @@
                             <div class="row g-3 mb-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Rear Overhang(mm)</label>
-                                    <input type="text" class="form-control form-control-sm" value="0">
+                                    <input type="text" class="form-control form-control-sm border border-primary" value="0" readonly>
                                 </div>
                             </div>
 
@@ -1323,20 +1351,20 @@
                                 <div class="form-section-child-child-title">Registered Axle Weight(kg)</div>
                                 <div class="row g-3">
                                     <div class="col-md-3">
-                                        <label class="form-label">Front*</label>
-                                        <input type="text" class="form-control form-control-sm" value="">
+                                        <label class="form-label">Front <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="form-label">Rear*</label>
-                                        <input type="text" class="form-control form-control-sm" value="">
+                                        <label class="form-label">Rear <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Other</label>
-                                        <input type="text" class="form-control form-control-sm" value="">
+                                        <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label">Tandem</label>
-                                        <input type="text" class="form-control form-control-sm" value="">
+                                        <input type="text" class="form-control form-control-sm border border-primary" value="" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -1345,45 +1373,36 @@
                 </div>
             </div>
 
-            <!-- Hypothecation Details Table -->
-            <div class="form-section mb-3">
-                <div class="form-section-title text-center">Hypothecation Details</div>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-sm">
-                        <thead>
-                            <tr>
-                                <th>Sr.No</th>
-                                <th>Type</th>
-                                <th>Financer</th>
-                                <th>Address</th>
-                                <th>From</th>
-                                <th>Parent Id</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1.</td>
-                                <td>Hypothecation</td>
-                                <td>BALAJI AUTOFINANCE FIN007 00000322018</td>
-                                <td>#14-1-23, MORRIES PET, TENALI,TENALI,, Andhra Pradesh - 522202</td>
-                                <td>08-OCT-2025</td>
-                                <td>FIN007000003220 18</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            
 
-            <!-- Action Buttons -->
-            <div class="action-buttons p-2">
-                <button class="btn-outline-prime">Save</button>
-                <button class="btn-outline-prime">
-                    <svg viewBox="0 0 16 16" fill="currentColor">
-                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                    </svg>
-                    Back
-                </button>
-                <button class="btn-outline-prime">Reset</button>
+        </div>
+
+        <!-- Hypothecation Details Table -->
+        <div class="">
+            <div class="form-section-title text-center m-0">Hypothecation Details</div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm mb-0">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Type</th>
+                            <th>Financer</th>
+                            <th>Address</th>
+                            <th>From</th>
+                            <th>Parent Id</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td>Hypothecation</td>
+                            <td>BALAJI AUTOFINANCE FIN007 00000322018</td>
+                            <td>#14-1-23, MORRIES PET, TENALI,TENALI,, Andhra Pradesh - 522202</td>
+                            <td>08-OCT-2025</td>
+                            <td>FIN007000003220 18</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

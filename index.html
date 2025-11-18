@@ -381,6 +381,8 @@
             font-size: 14px;
             font-weight: 900;
             cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
         }
 
         .btn-outline-prime:hover {
@@ -394,6 +396,12 @@
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
+            flex-direction: column;
+        }
+        @media (min-width: 1200px) {
+            .lower-content {
+                flex-direction: row;
+            }
         }
 
         .panel {
@@ -414,7 +422,12 @@
 
         .panel-body {
             padding: 20px;
-            max-width: 75%;
+            max-width: 100%;
+        }
+        @media (min-width: 768px) {
+            .panel-body {
+                max-width: 75%;
+            }
         }
 
         .form-group {
@@ -493,6 +506,11 @@
         #actionDropdownMenu .form-control-sm {
             font-size: 14px;
             padding: 4px 8px;
+        }
+
+        .form-control:read-only {
+            background-color: #dddddc !important;
+            color: #202B23;
         }
 
         .dropdown-item svg {
@@ -656,10 +674,21 @@
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
                 z-index: 1000;
             }
+            
+            .nav-links .dropdown-menu.report-menu{
+                width: 225px;
+            }
 
             .nav-links .dropdown-item {
                 color: #333;
                 padding: 10px 20px;
+                display: flex;
+                align-items: center;
+            }
+
+            .nav-links .dropdown-item svg {
+                margin-right: 8px;
+                flex-shrink: 0;
             }
 
             .nav-links .dropdown-item:hover {
@@ -962,19 +991,9 @@
         /* Touch-friendly sizes for mobile */
         @media (max-width: 767.98px) {
 
-            .btn,
-            button {
-                min-height: 44px;
-                padding: 10px 20px;
-            }
-
-            .form-control,
-            .form-select,
-            .app-number-part input {
-                min-height: 44px;
-                font-size: 16px;
-                /* Prevents zoom on iOS */
-            }
+           
+            
+            
 
             .registration-input {
                 font-size: 14px;
@@ -1058,9 +1077,31 @@
                                 </svg>
                                 Report
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="reportDropdown">
-                                <li><a class="dropdown-item" href="#">Report 1</a></li>
-                                <li><a class="dropdown-item" href="#">Report 2</a></li>
+                            <ul class="dropdown-menu report-menu" aria-labelledby="reportDropdown">
+                                <li><a class="dropdown-item" href="#">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+                                        <path d="M2 6h7v4H2V6zm7.0371-1.9572 4 4-4 4V7.7468z"/>
+                                    </svg>
+                                    Application Status
+                                </a></li>
+                                <li><a class="dropdown-item" href="#">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+                                        <path d="M2 6h7v4H2V6zm7.0371-1.9572 4 4-4 4V7.7468z"/>
+                                    </svg>
+                                    Registered Vehicle Details
+                                </a></li>
+                                <li><a class="dropdown-item" href="#">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+                                        <path d="M2 6h7v4H2V6zm7.0371-1.9572 4 4-4 4V7.7468z"/>
+                                    </svg>
+                                    Collection Summary
+                                </a></li>
+                                <li><a class="dropdown-item" href="#">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+                                        <path d="M2 6h7v4H2V6zm7.0371-1.9572 4 4-4 4V7.7468z"/>
+                                    </svg>
+                                    Financier Details
+                                </a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -1160,7 +1201,7 @@
             <!-- Left Panel -->
             <div class="panel border border-primary p-1">
                 <div class="panel-header rounded border border-primary">Select Assigned Office & Action</div>
-                <div class="panel-body">
+                <div class="panel-body mx-auto mx-xl-0">
                     <div class="form-group">
                         <label class="fw-bold form-label">Select Assigned Office:</label>
                         <div class="input-group border border-primary rounded">
@@ -1172,7 +1213,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group ">
                         <label class="fw-bold">Select Action:</label>
                         <div class="dropdown" style="position: relative;">
                             <button
@@ -1212,6 +1253,7 @@
                                 <li><a class="dropdown-item" href="#">ISSUE OF FRC-ENTRY-SCRUTINY</a></li>
                             </ul>
                         </div>
+                        <div class="text-center mt-4"><a href="index2.html" class="btn-outline-prime">Show Form</a></div>
                     </div>
                 </div>
             </div>
@@ -1221,8 +1263,8 @@
                 <div class="panel-header rounded border border-primary">Get Pending Work</div>
                 <div class="panel-body mx-auto">
                     <div class="radio-group">
-                        <div class="row g-3">
-                            <div class="col-6">
+                        <div class="row g-1 g-sm-2">
+                            <div class="col-sm-6">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pendingWork" id="applicationNo"
                                         checked>
@@ -1230,21 +1272,21 @@
                                         No</label>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-6">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pendingWork" id="oldSoftware">
                                     <label class="fw-bold text-nowrap form-check-label" for="oldSoftware">Old Software
                                         Appl No</label>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-6">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pendingWork" id="registrationNo">
                                     <label class="fw-bold text-nowrap form-check-label"
                                         for="registrationNo">Registration No</label>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-6">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pendingWork" id="pendingApps">
                                     <label class="fw-bold text-nowrap form-check-label" for="pendingApps">Pending
