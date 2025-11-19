@@ -773,21 +773,6 @@
             text-shadow: 5px 5px 5px #828282;
         }
 
-        .submit-btn {
-            background: #0c516f;
-            color: #fff;
-            border: none;
-            padding: 8px 30px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            background: #00446d;
-        }
 
         /* OTP Section Styles */
         .otp-message {
@@ -841,7 +826,7 @@
         }
 
         .user-id-text {
-            margin: 15px 0;
+            margin-bottom: 0.5rem;
         }
 
         .user-id-text .field-label {
@@ -856,13 +841,26 @@
         }
 
         .button-group-horizontal {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
             margin: 15px 0;
         }
 
-        .login-btn,
+        .button-group-horizontal .col-6 {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .password-section {
+            margin-top: 0.5rem;
+        }
+
+        .password-input {
+            height: 30px !important;
+            border: 1px solid #0B7CA4 !important;
+            border-radius: 3px;
+            margin-bottom: 0;
+        }
+
+        .submit-btn,
         .back-btn {
             display: flex;
             align-items: center;
@@ -881,12 +879,11 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .login-btn:hover,
+        .submit-btn:hover,
         .back-btn:hover {
             background: #C8E5FF;
         }
 
-        .login-btn .glyphicon,
         .back-btn .glyphicon {
             font-size: 12px;
             margin-right: 2px;
@@ -1327,28 +1324,27 @@
                                 <img src="images/login-userf75c.png" alt="User Profile" />
                             </div>
                         </div>
-                        <div class="mb-3 otp-message">
-                            <p class="otp-warning-text">
-                                One Time Password (OTP) has been sent to your registered Mobile No *******495.Please Do not share it with anyone.
-                            </p>
-                        </div>
-                        <div class="mb-3 user-id-text">
+                        <div class="mb-2 user-id-text">
                             <span class="field-label">User ID :</span> <span class="user-id-value">vyshalid</span>
                         </div>
-                        <div class="mb-3 otp-section">
-                            <div class="otp-input-wrapper">
-                                <input id="otp_input" name="otp_input" type="text" class="form-control shadow-0 otp-input"
-                                    placeholder="Enter OTP" autocomplete="off" maxlength="10" />
-                                <button type="button" class="resend-otp-btn">ReSend OTP</button>
-                            </div>
+                        <div class="mb-3 password-section">
+                            <label class="field-label" for="password_input">
+                                Password -<span class="ui-outputlabel-rfi">*</span>
+                            </label>
+                            <input id="password_input" name="password_input" type="password" class="form-control password-input"
+                                autocomplete="off" />
                         </div>
-                        <div class="button-group-horizontal">
-                            <button type="submit" class="login-btn">
-                                <span class="glyphicon glyphicon-lock"></span> Login
-                            </button>
-                            <button type="button" class="back-btn">
-                                <span class="glyphicon glyphicon-arrow-left"></span> Back
-                            </button>
+                        <div class="row button-group-horizontal">
+                            <div class="col-6">
+                                <button type="submit" class="submit-btn w-100">
+                                    Submit
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="back-btn w-100">
+                                    <span class="glyphicon glyphicon-arrow-left"></span> Back
+                                </button>
+                            </div>
                         </div>
                         <div class="text-end top-space">
                             <a href="#" class="forgot-password-link">Forgot Password?</a>

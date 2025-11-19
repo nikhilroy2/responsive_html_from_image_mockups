@@ -724,17 +724,20 @@
         .login-panel-content input[type="password"] {
             border: 1px solid #0B7CA4 !important;
             height: 30px;
-            border-radius: 0;
-            /* box-shadow: 0 8px 6px -6px #181818; */
+            border-radius: 3px;
             margin-bottom: 5px;
             width: 100%;
             padding: 5px 10px;
-            margin-bottom: 0;
-            border-radius: 3px;
+        }
+
+        .login-panel-content input[type="text"]:focus,
+        .login-panel-content input[type="password"]:focus {
+            background-color: #C6FFC6 !important;
+            outline: none;
         }
 
         .field-label {
-            color: #193300;
+            color: #000;
             font-size: 13px;
             font-weight: 400;
             line-height: 2;
@@ -768,25 +771,27 @@
 
         .captcha-input {
             height: 50px !important;
-            font-size: 30px !important;
             font-weight: 900 !important;
-            text-shadow: 5px 5px 5px #828282;
+        }
+
+        .captcha-input:focus {
+            background-color: #C6FFC6 !important;
+            outline: none;
         }
 
         .submit-btn {
-            background: #0c516f;
-            color: #fff;
-            border: none;
-            padding: 8px 30px;
+            background: #E1F1FF;
+            color: #000;
+            border: 1px solid #0B7CA4;
+            padding: 5px 20px;
             font-size: 14px;
             font-weight: bold;
             border-radius: 4px;
             cursor: pointer;
-            width: 100%;
         }
 
         .submit-btn:hover {
-            background: #00446d;
+            background: #C8E5FF;
         }
 
         /* OTP Section Styles */
@@ -1327,31 +1332,28 @@
                                 <img src="images/login-userf75c.png" alt="User Profile" />
                             </div>
                         </div>
-                        <div class="mb-3 otp-message">
-                            <p class="otp-warning-text">
-                                One Time Password (OTP) has been sent to your registered Mobile No *******495.Please Do not share it with anyone.
-                            </p>
+                        <div class="mb-3">
+                            <label class="field-label" for="user_id">
+                                User ID<span class="ui-outputlabel-rfi">*</span>
+                            </label>
+                            <input id="user_id" name="user_id" type="text" class="form-control" 
+                                autocomplete="off" maxlength="20" style="width: 100%" />
                         </div>
-                        <div class="mb-3 user-id-text">
-                            <span class="field-label">User ID :</span> <span class="user-id-value">vyshalid</span>
-                        </div>
-                        <div class="mb-3 otp-section">
-                            <div class="otp-input-wrapper">
-                                <input id="otp_input" name="otp_input" type="text" class="form-control shadow-0 otp-input"
-                                    placeholder="Enter OTP" autocomplete="off" maxlength="10" />
-                                <button type="button" class="resend-otp-btn">ReSend OTP</button>
+                        <div class="mb-3 captcha-section">
+                            <label class="field-label">
+                                Enter Verification Code<span class="ui-outputlabel-rfi">*</span>
+                            </label>
+                            <div class="captcha-image">
+                                <img src="https://via.placeholder.com/150x50?text=CAPTCHA" alt="Captcha" class="bottom-space" />
+                                <button type="button" class="captcha-refresh-btn">
+                                    <span class="glyphicon glyphicon-refresh"></span>
+                                </button>
                             </div>
+                            <input id="CaptchaID" name="CaptchaID" type="text" class="form-control captcha-input"
+                                placeholder="Verification Code" autocomplete="off" maxlength="5" size="10" />
                         </div>
-                        <div class="button-group-horizontal">
-                            <button type="submit" class="login-btn">
-                                <span class="glyphicon glyphicon-lock"></span> Login
-                            </button>
-                            <button type="button" class="back-btn">
-                                <span class="glyphicon glyphicon-arrow-left"></span> Back
-                            </button>
-                        </div>
-                        <div class="text-end top-space">
-                            <a href="#" class="forgot-password-link">Forgot Password?</a>
+                        <div class="mb-3 top-space text-center">
+                            <button type="submit" class="submit-btn ">Submit</button>
                         </div>
                     </div>
                 </div>
