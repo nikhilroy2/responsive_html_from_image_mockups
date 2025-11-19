@@ -733,6 +733,12 @@
             border-radius: 3px;
         }
 
+        .login-panel-content input[type="text"]:focus,
+        .login-panel-content input[type="password"]:focus {
+            background-color: #C6FFC6 !important;
+            outline: none;
+        }
+
         .field-label {
             color: #193300;
             font-size: 13px;
@@ -1337,7 +1343,7 @@
                         </div>
                         <div class="mb-3 otp-section">
                             <div class="otp-input-wrapper">
-                                <input id="otp_input" name="otp_input" type="text" class="form-control shadow-0 otp-input"
+                                <input id="otp_input" name="otp_input" type="password" class="form-control shadow-0 otp-input"
                                     placeholder="Enter OTP" autocomplete="off" maxlength="10" />
                                 <button type="button" class="resend-otp-btn">ReSend OTP</button>
                             </div>
