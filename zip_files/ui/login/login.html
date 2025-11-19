@@ -1,0 +1,587 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Mirrored from vahan.parivahan.gov.in/vahan/vahan/ui/login/login.xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Nov 2025 10:01:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head id="j_idt2"><link type="text/css" rel="stylesheet" href="../../javax.faces.resource/themef3a8.css?ln=primefaces-parivahan" /><link type="text/css" rel="stylesheet" href="../../javax.faces.resource/grid-csse9d7-2.css?ln=css" /><link type="text/css" rel="stylesheet" href="../../javax.faces.resource/layout.mine9d7-2.css?ln=css" /><link type="text/css" rel="stylesheet" href="../../javax.faces.resource/stylesheet.mine9d7.css?ln=css" /><script type="text/javascript" src="../../javax.faces.resource/jsf8be1.js?ln=javax.faces"></script><link type="text/css" rel="stylesheet" href="../../javax.faces.resource/components68f8-2.css?ln=primefaces&amp;v=7.0" /><script type="text/javascript" src="../../javax.faces.resource/jquery/jquery68f8.js?ln=primefaces&amp;v=7.0"></script><script type="text/javascript" src="../../javax.faces.resource/jquery/jquery-plugins68f8.js?ln=primefaces&amp;v=7.0"></script><script type="text/javascript" src="../../javax.faces.resource/core68f8.js?ln=primefaces&amp;v=7.0"></script><script type="text/javascript" src="../../javax.faces.resource/components68f8.js?ln=primefaces&amp;v=7.0"></script><script type="text/javascript" src="../../javax.faces.resource/keyfilter/keyfilter68f8.js?ln=primefaces&amp;v=7.0"></script><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en';}</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+        <meta http-equiv="refresh" content="900" />
+        <title>VAHAN 4~142~2
+        </title>
+        <link rel="shortcut icon" type="image/x-icon" href="../../javax.faces.resource/images/vahan_icon.ico" /><script type="text/javascript" src="../../javax.faces.resource/js/bootstrap.min98e7.js?ln=bootstrap-3.3.1"></script><script type="text/javascript" src="../../javax.faces.resource/md58490.js?ln=js"></script><script type="text/javascript" src="../../javax.faces.resource/sha2568490.js?ln=js"></script><script type="text/javascript" src="../../javax.faces.resource/jquery.marquee.minb41c.js?ln=jquery"></script><script type="text/javascript" src="../../javax.faces.resource/Biocaptureb41c.js?ln=jquery"></script>
+        <style>
+            .chartdiv {
+                width: 100%;
+                height: 430px;
+            }
+        </style>
+        <script type="text/javascript">
+            //<![CDATA[
+            function makePassword() {
+                var element = document.getElementById("passwordID");
+                var val = element.value;
+                if (val !== null && val !== '') {
+                    var shaval = hex_sha256(val);
+                    var element1 = document.getElementById("txtNumber");
+                    var randomnumber = element1.value;
+                    val = shaval + randomnumber;
+                    var shaval = hex_sha256(val);
+                    element.value = shaval;
+                    return true;
+                }
+            }
+            //]]>
+
+            $(function () {
+                $('.marquee').marquee();
+                $('.marquee-with-fast-options').marquee({
+                    speed: 25000,
+                    gap: 2,
+                    delayBeforeStart: 0,
+                    duration: 10,
+                    direction: 'left',
+                    duplicated: false,
+                    pauseOnHover: true
+                });
+            });
+
+            function noBack() {
+                window.history.go(1);
+            }
+
+            $(document).ready(function () {
+                $('.no-copy-paste').on("cut copy paste", function (e) {
+                    e.preventDefault();
+                });
+            });
+
+            async function aadharEncrption() {
+                // Convert string to ArrayBuffer
+                const encoder = new TextEncoder();
+                var aadharNumber = document.getElementById('uidToken').value.toUpperCase();
+                const data = encoder.encode(aadharNumber);
+                // Use the provided base64-encoded key
+                const base64Key = document.getElementById('adhKey').value;
+                const keyBytes = Uint8Array.from(atob(base64Key), c => c.charCodeAt(0));
+                const key = await crypto.subtle.importKey(
+                        'raw',
+                        keyBytes,
+                        {name: 'AES-GCM'},
+                        false,
+                        ['encrypt', 'decrypt']
+                        );
+
+                // Generate a random initialization vector (IV)
+                const iv = crypto.getRandomValues(new Uint8Array(16));
+                // Encrypt the data using AES-GCM
+                const ciphertext = await crypto.subtle.encrypt(
+                        {name: 'AES-GCM', iv: iv},
+                        key,
+                        data
+                        );
+                // Combine IV and ciphertext for storage/transport
+                const encryptedData = new Uint8Array(iv.length + ciphertext.byteLength);
+                encryptedData.set(iv);
+                encryptedData.set(new Uint8Array(ciphertext), iv.length);
+                // Convert to base64 for easy transport
+                const base64Encoded = btoa(String.fromCharCode.apply(null, encryptedData));
+                document.getElementById('uidToken').value = base64Encoded;
+            }
+        </script></head><body onload="noBack();"><input id="txtNumber" type="hidden" name="txtNumber" value="K8A6VfCKi79OgB1nG7WauAov4iNvZ259Z6694Ugb" /><input id="uidToken" type="hidden" name="uidToken" /><input id="adhKey" type="hidden" name="adhKey" value="Bs6ZRvNrrvDZ2Qp249OAEvmjSn+ndBTlBL8mxYhYyCY=" />
+<form id="loginForm" name="loginForm" method="post" action="https://vahan.parivahan.gov.in/vahan/vahan/ui/login/login.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="loginForm" value="loginForm" />
+<input type="hidden" name="uniqueToken" value="50FACE6A4D9F6AD5707AFF0C93D73DAA1763373671722" />
+            <div><html xmlns="http://www.w3.org/1999/xhtml">
+    <script type="text/javascript">
+        $(function () {
+            $('.marquee').marquee();
+            $('.marquee-with-options').marquee({
+                speed: 50000,
+                gap: 2,
+                delayBeforeStart: 0,
+                duration: 10,
+                direction: 'left',
+                duplicated: false,
+                pauseOnHover: true
+            });
+        });
+
+        function changemysize(myvalue) {
+            var div = document.getElementById("mymain");
+            div.style.fontSize = myvalue + "px";
+        }
+    </script>
+    <style>
+        .language-link {
+            font-weight: normal !important; 
+            color: #000000 !important; 
+            padding: 3px 20px !important; 
+            line-height: 1.42857143; 
+            display: block;
+            text-decoration: none !important;
+        }
+        .language-link:hover, .language-link:focus {
+            color: #FFFFFF !important; 
+            background: #00648C!important;
+        }
+    </style>
+        <div class="top-navigation-section">
+            <div class="right-position text-resize-section">
+
+                <ul>
+                    <li class="skip-responsive-section"> 
+                        <a href="https://vahan.parivahan.gov.in/vahan/" title="Home">
+                            <span class="glyphicon glyphicon-home"></span> Home
+                        </a>
+                    </li>
+                    <li class="skip-responsive-section"> 
+                        <a href="#navbar">
+                            <span class="glyphicon glyphicon-arrow-down"></span> Skip Main Content
+                        </a>
+                    </li>
+                    <li class="skip-responsive-section"> 
+                        <a href="#main-content">
+                            <span class="glyphicon glyphicon-arrow-down"></span> Skip Navigation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="decfont">A<sup>-</sup></a>
+                    </li>
+                    <li>
+                        <a href="#" id="resetfont"> A</a>
+                    </li>
+                    <li>
+                        <a href="#" id="incfont">A<sup>+</sup></a>
+                    </li>
+                    
+                    <li class="dropdown" style="width: 100px">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-globe"></span> Language <span class="caret"></span></a>
+                        <ul class="dropdown-menu" style="margin-left: -5px; margin-top: 0px;  min-width: 100px;">
+                                <li style="display: block !important;"><a href="#" onclick="mojarra.jsfcljs(document.getElementById('loginForm'),{'j_idt19:0:j_idt21':'j_idt19:0:j_idt21'},'');return false" class="language-link"> <span class="glyphicon glyphicon-arrow-right"></span> English</a>
+                                </li>
+                                <li style="display: block !important;"><a href="#" onclick="mojarra.jsfcljs(document.getElementById('loginForm'),{'j_idt19:1:j_idt21':'j_idt19:1:j_idt21'},'');return false" class="language-link"> <span class="glyphicon glyphicon-arrow-right"></span> हिंदी</a>
+                                </li>
+                                <li style="display: block !important;"><a href="#" onclick="mojarra.jsfcljs(document.getElementById('loginForm'),{'j_idt19:2:j_idt21':'j_idt19:2:j_idt21'},'');return false" class="language-link"> <span class="glyphicon glyphicon-arrow-right"></span> தமிழ்</a>
+                                </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="logo-header-section">
+            <div class="container">
+                <div class="inline-section vertical-right-divider"><a id="loginId" name="loginId" href="login.html"><img id="j_idt25" src="../../javax.faces.resource/logo-national-emblemf75c.png?ln=images" class="logo-resize" alt="National Emblem" /></a>
+                </div>
+                <div class="inline-section fix-width">
+                    <div class="slogan-name">
+                        Ministry of Road Transport &amp; Highways 
+                    </div>
+                    <div class="govt-india">
+                        Government of India 
+                    </div>
+                </div>
+                <div class="inline-section float-right"><a id="loginId1" name="loginId1" href="login.html"><img id="j_idt27" src="../../javax.faces.resource/logo-evahanf75c.png?ln=images" class="logo-resize" alt="e-vahan4" /></a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar-default navigation-background" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse navigation-background-nav" id="navbar">
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="https://vahan.parivahan.gov.in/vahan/" target="_parent"> <span class="glyphicon glyphicon-home"></span>  Home</a>
+                        </li>
+                        <li>
+                            <a href="https://parivahan.gov.in/" target="_blank"> <span class="glyphicon glyphicon-road"></span> Parivahan</a>
+                        </li>
+                        <li><a id="j_idt29" href="#" onclick="mojarra.ab(this,event,'action',0,0,{'pur_cd':'0'});return false">
+                                <span class="glyphicon glyphicon-book"></span> 
+                                <span>Know Your MV Tax</span></a>
+                        </li>
+                        <li><a id="j_idt33" href="#" onclick="mojarra.ab(this,event,'action',0,0);return false">
+                                <span class="glyphicon glyphicon-book"></span> 
+                                <span>Financier Regn</span></a>
+                        </li>
+                        <li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('loginForm'),{'j_idt36':'j_idt36'},'');return false">
+                                <span class="glyphicon glyphicon-credit-card"></span> 
+                                <span>Online Payment</span></a> 
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-book"></span> Transaction Status  <b class="caret"></b></a> 
+                            <ul class="dropdown-menu">
+                                <li><a href="https://vahan.parivahan.gov.in/vahanpgi/faces/ui/transactionStatus.xhtml" target="_blank">Know Your Transaction Status</a></li>
+                                <li><a href="https://vahan.parivahan.gov.in/vahanpgi/faces/ui/applPayments.xhtml" target="_blank">Know Your Application Payments Status</a></li> 
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-info-sign"></span> Informational Services  <b class="caret"></b></a> 
+                            <ul class="dropdown-menu">
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">About Registration</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/temporary-registration" target="_blank">Temporary Registration</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/permanent-registration" target="_blank">Permanent Registration</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/renewal-rc" target="_blank">Renewal of RC</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/duplicate-rc" target="_blank">Duplicate RC</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/no-objection-certificate" target="_blank">No Objection Certificate</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/address-change" target="_blank">Address Change</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/hp-endorsement" target="_blank">HP Endorsement</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/hp-termination" target="_blank">HP Termination</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/reassignment-0" target="_blank">Reassignment</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/trade-certificate" target="_blank">Trade Certificate</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/issue-duplicate-trade-certificate" target="_blank">Issue of Duplicate Trade Certificate</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/diplomatic-vehicles" target="_blank">Diplomatic Vehicles</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/ownership-transfer" target="_blank">Ownership Transfer</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/registration-display" target="_blank">Registration Display</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">About Permit</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/types-permit-and-its-condition" target="_blank">Contract Carriage </a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/fees-user-charges" target="_blank">Fees &amp; User Charges</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="https://parivahan.gov.in/parivahan/en/content/act-rules-and-policies" target="_blank">Act, Rules and Policies</a></li>
+                                <li><a href="https://parivahan.gov.in/parivahan/en/content/fees-user-charges" target="_blank">Fees &amp; User Charges</a></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Downloadable Forms </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/node/1886" target="_blank">Permit</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/motor-vehicles-dealer" target="_blank">Motor Vehicles Dealer</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/driving-licence-0" target="_blank">Driving Licence</a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/all-forms" target="_blank">All Forms </a></li>
+                                        <li><a href="https://parivahan.gov.in/parivahan/en/content/vehicle-registration" target="_blank">Vehicle Registration</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a id="contact" name="contact" href="../contactus.html"> <span class="glyphicon glyphicon-map-marker"></span> Contact us</a>
+                        </li>
+
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a id="loginId2" name="loginId2" href="login.html"> <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+        <div class="main_news_w">
+            <div class="news_w">
+                <div class="container">
+                    <div data-direction="left" class="marquee-with-options">
+                        VAHAN is the flagship e-Governance application under National Transport Project
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Mirrored from vahan.parivahan.gov.in/vahan/vahan/ui/login/login.xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Nov 2025 10:01:37 GMT -->
+</html>
+            </div>
+            <div id="main-content" class="container">
+
+                <div data-direction="left" class="marquee-with-fast-options top-space">
+                    <h4><label id="j_idt45" class="ui-outputlabel ui-widget"></label>
+                    </h4>
+                    
+                </div>
+
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-9">
+                            
+                            
+                            
+
+                            
+                            <div style="margin-top: 10px; padding: 5px;"><img id="j_idt50" src="../../javax.faces.resource/vahan4-chartf75c.png?ln=images" alt="" style="width: 100% !important; height: auto;" />
+                            </div>
+
+                        </div>
+                        <div class="ui-grid-col-3"><div id="loginPanelOutput" class="ui-outputpanel ui-widget "><div id="j_idt52" class="ui-panel ui-widget ui-widget-content ui-corner-all" data-widget="widget_j_idt52"><div id="j_idt52_header" class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span class="ui-panel-title">Login</span></div><div id="j_idt52_content" class="ui-panel-content ui-widget-content"><div id="loginPanel" class="ui-outputpanel ui-widget"><div id="errorMessages" class="ui-messages ui-widget" aria-live="polite"></div>
+                                        
+                                        <div class="left-position" style="padding-left: 10px;">
+                                            <div class="center-position" style="position: relative;">
+                                                <div class="user-background"><img id="j_idt54" src="../../javax.faces.resource/login-userf75c.png?ln=images" alt="User Profile" />
+                                                </div>
+                                            </div>
+                                            <div class="ui-grid-row">
+                                                <div class="ui-grid-col-12">
+                                                    <label class="field-label resp-label-section"><label id="j_idt56" class="ui-outputlabel ui-widget" for="user_id">User ID<span class="ui-outputlabel-rfi">*</span></label>
+                                                    </label><input id="user_id" name="user_id" type="text" style="width: 100%" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" aria-required="true" autocomplete="off" maxlength="20" size="28" /><script id="user_id_s" type="text/javascript">$(function(){PrimeFaces.cw("InputText","widget_user_id",{id:"user_id",maxlength:20});});</script>
+                                                </div>
+                                            </div>
+
+                                            <div class="ui-grid-row">
+                                                <div class="ui-grid-col-12">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-12">
+                <label class="field-label resp-label-section"><label id="login_captcha_id:j_idt60" class="ui-outputlabel ui-widget" for="login_captcha_id:CaptchaID">Enter Verification Code<span class="ui-outputlabel-rfi">*</span></label> 
+                </label>
+            </div>
+        </div><img id="login_captcha_id:ref_captcha" src="https://vahan.parivahan.gov.in/vahan/DispplayCaptcha?bkgp_cd=3&amp;noise_cd=2&amp;gimp_cd=4&amp;pfdrid_c=true?1114805098&amp;pfdrid_c=true" alt="" class="bottom-space" /><button id="login_captcha_id:btn_Captchaid" name="login_captcha_id:btn_Captchaid" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" onclick="mojarra.ab('login_captcha_id:btn_Captchaid',event,'click','@this','login_captcha_id:ref_captcha');;window.open('#','_self')"><span class="ui-button-icon-left ui-icon ui-c ui-icon-refresh"></span><span class="ui-button-text ui-c">ui-button</span></button><script id="login_captcha_id:btn_Captchaid_s" type="text/javascript">$(function(){PrimeFaces.cw("Button","widget_login_captcha_id_btn_Captchaid",{id:"login_captcha_id:btn_Captchaid"});});</script><input id="login_captcha_id:CaptchaID" name="login_captcha_id:CaptchaID" type="text" style="height: 50px !important;" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" aria-required="true" autocomplete="off" maxlength="5" placeholder="Verification Code" size="10" onblur="mojarra.ab('login_captcha_id:CaptchaID',event,'blur','@this','@this',{'CLIENT_BEHAVIOR_RENDERING_MODE':'OBSTRUSIVE'})" /><script id="login_captcha_id:CaptchaID_s" type="text/javascript">$(function(){PrimeFaces.cw("InputText","widget_login_captcha_id_CaptchaID",{id:"login_captcha_id:CaptchaID",maxlength:5});});</script>
+                                                </div>
+                                            </div>
+
+                                            <div class="ui-grid-row center-position bottom-space top-space">
+                                                <div class="ui-grid-col-12"><button id="j_idt63" name="j_idt63" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" onclick="PrimeFaces.bcn(this,event,[function(event){PF('bui').show();},function(event){PrimeFaces.ab({s:&quot;j_idt63&quot;,f:&quot;loginForm&quot;,u:&quot;loginPanelOutput&quot;,onco:function(xhr,status,args){PF('bui').hide();;}});return false;}]);" type="submit"><span class="ui-button-text ui-c">Submit</span></button><script id="j_idt63_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_j_idt63",{id:"j_idt63"});});</script>
+                                                </div>
+                                            </div>
+                                            <div class="ui-grid-row center-position bottom-space top-space">
+                                                <div class="ui-grid-col-12">
+                                                </div>
+                                            </div>
+                                        </div><script id="j_idt66_s" type="text/javascript">$(function(){PrimeFaces.cw("KeyFilter","widget_j_idt66",{id:"j_idt66",target:"user_id",mask:"email",preventPaste:true});});</script></div>
+
+                                    
+
+                                    <div class="ui-grid-row center-position bottom-space top-space">
+                                        <div class="ui-grid-col-12">
+
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-12 right-position right-space">
+                                        </div>
+                                    </div></div></div><script id="j_idt52_s" type="text/javascript">$(function(){PrimeFaces.cw("Panel","widget_j_idt52",{id:"j_idt52"});});</script></div><div id="j_idt122" class="ui-blockui-content ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow"><img id="j_idt123" src="../../javax.faces.resource/ajax_loader_bluef75c-2.svg?ln=images" alt="" width="30%" height="40%" /></div><script id="j_idt122_s" type="text/javascript">$(function(){PrimeFaces.cw("BlockUI","bui",{id:"j_idt122",block:"loginPanel"});});</script>
+                        </div>
+                    </div>
+                    <div class="center-position header-info">
+                        Other Information</div>
+                    <div>
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/vahanservice/" target="_blank"><img id="j_idt125" src="../../javax.faces.resource/icon-citizen-servicef75c.png?ln=images" alt="Citizen Services" />
+                                <div class="info-box-content">Citizen Services</div>
+                            </a>
+                        </div>
+
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/fancy/" target="_blank"><img id="j_idt127" src="../../javax.faces.resource/icon-fancy-nof75c.png?ln=images" alt="Fancy Number" />
+                                <div class="info-box-content">Fancy Number</div>
+                            </a>
+                        </div>
+                        <div class="info-box-section">
+                            <a href="https://analytics.parivahan.gov.in/" target="_blank"><img id="j_idt129" src="../../javax.faces.resource/icon-analyticsf75c.png?ln=images" alt="Analytics" />
+                                <div class="info-box-content">Analytics</div>
+                            </a>
+                        </div>
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/vahan4dashboard/" target="_blank"><img id="j_idt131" src="../../javax.faces.resource/icon-vahan-dashboardf75c.png?ln=images" alt="Vahan Dashboard" />
+                                <div class="info-box-content">Vahan Dashboard</div>
+                            </a>
+                        </div>
+
+
+                    </div>
+                    <div>
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/nrservices/" target="_blank"><img id="j_idt133" src="../../javax.faces.resource/icon-nrServicesf75c.png?ln=images" alt="nrservices" />
+                                <div class="info-box-content">National Register Services</div>
+                            </a>
+                        </div>
+
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/paidnrservices/" target="_blank"><img id="j_idt135" src="../../javax.faces.resource/icon-paid-nr-servicef75c.png?ln=images" alt="Paid NR Services" />
+                                <div class="info-box-content">Paid NR Services</div>
+                            </a>
+                        </div>
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/vahanreport/" target="_blank"><img id="j_idt137" src="../../javax.faces.resource/icon-mis-reportf75c.png?ln=images" alt="MIS Report" />
+                                <div class="info-box-content">MIS Report</div>
+                            </a>
+                        </div>
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/vahanbacklog/" target="_blank"><img id="j_idt139" src="../../javax.faces.resource/icon-backlogf75c.png?ln=images" alt="Backlog" />
+                                <div class="info-box-content">Backlog</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/makermodel/vahan/welcome.xhtml" target="_blank"><img id="j_idt141" src="../../javax.faces.resource/icon-homologationf75c.png?ln=images" alt="Homologation" />
+                                <div class="info-box-content">Homologation</div>
+                            </a>
+                        </div>
+
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/npermit/" target="_blank"><img id="j_idt143" src="../../javax.faces.resource/icon-national-permitf75c.png?ln=images" alt="National Permit" />
+                                <div class="info-box-content">National Permit</div>
+                            </a>
+                        </div>
+
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/cngmaker/vahan/welcome.xhtml" target="_blank"><img id="j_idt145" src="../../javax.faces.resource/icon-cng-makerf75c.png?ln=images" alt="CNG Maker" />
+                                <div class="info-box-content">CNG Maker</div>
+                            </a>
+                        </div>
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/sldmaker/" target="_blank"><img id="j_idt147" src="../../javax.faces.resource/icon-sld-makerf75c.png?ln=images" alt="SLD Maker" />
+                                <div class="info-box-content">SLD Maker</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+
+                        <div class="info-box-section">
+                            <a href="http://www.morth.nic.in/" target="_blank"><img id="j_idt149" src="../../javax.faces.resource/icon-morthf75c.png?ln=images" alt="MoRTH" />
+                                <div class="info-box-content">MoRTH</div>
+                            </a>
+                        </div>
+                        <div class="info-box-section">
+                            <a href="http://nextmile.gov.in/" target="_blank"><img id="j_idt151" src="../../javax.faces.resource/icon-news-letterf75c.png?ln=images" alt="Parivahan News Letter" />
+                                <div class="info-box-content">Parivahan News Letter</div>
+                            </a>
+                        </div>
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/vltdmaker/vahan/welcome.xhtml" target="_blank"><img id="j_idt153" src="../../javax.faces.resource/icon-vltdf75c.png?ln=images" alt="VLTD Maker" />
+                                <div class="info-box-content">VLTD Maker</div>
+                            </a>
+                        </div>
+                        <div class="info-box-section">
+                            <a href="https://vahan.parivahan.gov.in/aitp/" target="_blank"><img id="j_idt155" src="../../javax.faces.resource/icon-all-india-touriost-permitf75c.png?ln=images" alt="All India Touriost Permit" />
+                                <div class="info-box-content">AITP</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer_view" class="top-space"><html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+    <div class="bottom-background bottom-space-2">
+        <div class="container padding-normalize-zero footer-content footer-line-height">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-7">
+                    <div class="top-space">
+                        <div class="region region-footer-left">
+                            <section id="block-block-1" class="block block-block clearfix">
+                                <table style="width: 100%; border: 1px  solid transparent;font-size: 1.1em;">
+                                    <tbody><tr>
+                                            <td>
+                                                <ul>
+                                                    <li><a href="https://parivahan.gov.in/parivahan/node/2" target="_blank">About Us</a></li>
+                                                    <li><a href="https://parivahan.gov.in/parivahan/node/20" target="_blank">Terms of Use</a></li>
+                                                    <li><a href="https://parivahan.gov.in/parivahan/node/24" target="_blank"> FAQs</a></li>
+
+
+
+
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul>
+                                                    <li><a href="https://parivahan.gov.in/parivahan/node/21" target="_blank">Privacy Policy</a></li>
+                                                    <li><a href="https://parivahan.gov.in/parivahan/node/22" target="_blank">Copyright Policy</a></li>
+                                                    <li><a href="https://parivahan.gov.in/parivahan/node/23" target="_blank">Hyperlink Policy</a></li>
+
+
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul>
+                                                    <li><a href="https://parivahan.gov.in/parivahan/node/42" target="_blank">Act, Rules &amp; Policies</a></li>
+                                                    <li><a href="https://parivahan.gov.in/parivahan/node/43" target="_blank">Fees &amp; User Charges</a></li>
+                                                    <li><a id="contactusLink" name="contactusLink" href="../contactus.html">  Contact us</a></li>
+
+                                                </ul>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-grid-col-5 vertical-divider">
+                    <div class="region region-footer-right">
+                        <section id="block-block-5" class="block block-block clearfix">
+                            <table style="width: 100%; border: 0px solid transparent; verticle-align: middle; text-align: left;">
+                                <tbody>
+                                    <tr>
+                                        <td>     </td>
+                                        <td>
+                                            <div class="qrcode">
+                                                <div id="google-qr-code"><img id="j_idt160" src="../../javax.faces.resource/qrCodef75c.png?ln=images" class="googleQRcode img-responsive" alt="QR Code for HTTPS://parivahan.gov.in/vahan" />
+                                                </div>  
+                                            </div>
+                                        </td>
+                                        <td style="margin-left: 20px;">
+                                            <a href="http://www.nic.in/" target="_blank"><img id="j_idt162" src="../../javax.faces.resource/nic-logof75c.png?ln=images" alt="NIC" /></a>
+                                            <div class="copyright">This Website belongs to Ministry of Road Transport &amp; Highways (MoRTH)  <br />Government of India </div>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table> 
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+
+    <div class="left-position vahan-footer-section">
+        <div class="ui-grid ui-grid-responsive">
+
+
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-3 resize-panel-position">
+                    <div class="inline-section">
+                        <div class="footer-line-height">
+                            <a href="#"><img id="j_idt164" src="../../javax.faces.resource/256sllf75c.png?ln=images" alt="256 Bit Secure" style="height: 35px;" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="inline-section">
+                        <div class="footer-line-height left-space">
+                            <a href="#"><img id="j_idt166" src="../../javax.faces.resource/getsealf75c.png?ln=images" alt="Norton Secured" style="height: 35px;" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-grid-col-6 center-position resize-panel-position">
+                    <div style="line-height: 28px;">
+                        Powered by National Informatics Centre. All Rights Reserved. 
+                    </div>
+                    <div>
+                        Copyright @2015
+                        <label id="j_idt168" class="ui-outputlabel ui-widget" style="color: #FF2D2D !important;">Total number of visitors-320655796</label>
+                    </div>
+                </div>
+
+
+                <div class="ui-grid-col-3 right-position resize-panel-position">
+                    
+                    <div>
+                        @V4-2025-11-12-17-09
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+  
+</html>
+            </div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="1clvEGdbJBej9CSfGIGG1e8ehFXcMvgtc9T+cFsoTlXHDL8zL65gkbojSLvSJV3fgG2p+s99SdZfcgrN+7CrhRFeYsPfEANJFMXTtVeWDTKmQYGiF/2FMZUXTKMPFjbFtTA8Ag18204uqR/VjDBquHIZZRN3zjWiXbTbOjlp43nD5QhbduUTVUrmIlLdfF7qBWI6q9+ijzoXuczU81sS3T8Lv10N17zp4wk913DzYoBI1GY8ZgpWJGDh0limesNDC+Ou6Q2ZWyDk3ChsEZAUAVVpuZ7mzL4u+Hk2wky3JNZVN/fW9ahh5Qh/2TrAvDwlxS9Bf5SSlBYg28VUqTV/UCsaly/iMp5KtLo69nsYFzXT4Y5dVFs5PX+rkt3PNhT2OvjgfhRIV5cVTDJgw4V2+6asTXoaOATO/0PHg8HArh+zV8Qb9d+cFbjc5zIjOaBC3kb61MtIUIB9TONiGPoypFCtuXl1l8Ue19PBVna5UniW8p8ELg7q9fGFWgduypdJIquMVEXHrt1bFzKie8X/JiNHJwfcBvDoYcjGj9ltx6uaHQJVodPQnmeFEEGEOC5G6mmmFtJmDiPPa0nO5/4mBOezRtqnMgBp/xEoQnHZjpzDsEfE7JSu+QJL8SAN6h4qa7EWruZxXlXR9nTHUmEKdHnfwks2HNbFqX8e3Z9ruizNXw4So48ayLKeqKWxLqJTqqprT1UG87Vcg1QYR46C48P0R3NVA8MYElSrneCw1xEUayNcDaBrTZ0CgEgqxa/i2Lkj/TfCVbVh4ZEQjBDUt1giGW8wyDGu8IzPfFYZF+Qb5NG7FZjujPp5xwuVA6e7nlWMkmY8VkO+ujoqiH0rNmw4PZiRgJnc+VHayU88WMj2zaRylvbXf4IiS79x/JXvlJgZfk50VEzGarpkj6wxZ0t6NXFDMTMLq1nih8yaxlGI5t9g8+DjSDdW43K/cZHzt8VdVb6xcJ2nSDV2SHPDuZClVJVoNxurfZklzlg5WXBj/XgbOryaq0AEUaLm0QltSiy9yEXX7WqwXXNIglpkpbdgflUf4Pf2jT/STRoxIed/pRJOZjUUTa6hLppnDxiUTfLgSjmrtQXqTN03pvzXesQZ9EuptMLXHJdyDtsVOOrAfabWBYnUw10iagwxZG6/ej0QcuX0Qr2ftVEjD/tv8CyX8Kp6CRFuofZ+sUqZB8LqTXDWmvZSFy1Yw3Hk4vjH0Zvpk9CqHwkOCmmu91/99DFz+9wr+45yVXRfxbnsnq50SSs6goFioEZyXv5BpWNLajAdbu1fLH245B2c0emyxQu/14Bnmo/zO8WUMbHpNQaBSFlVoJkPFSwXun4sfFn/l+HwRfIPdO/PqS0mcjsT6Souc5VSg5TI16+PE8jcLd/p4TlDcV77TYl1a+xH8bRIZMoDT2+1O5odshi7tAA/CC24y/X1wgQfkpAV1yop1uJxNwnMjGE1dvHCrGCAjtvhiY74BYr231UCWksD+CJVYwJ+6fokbA/LRpRZ7EXib5G4AxRznXF6wS0eUYE63SPlt+xoyWIZy+KNjr2xLRK9sMbf5c210BAPiFTUpSOoSybWgJBoBnvjDNbS+9Kx8KoPJbWXsrO6//WEgC6DOiS6PZnUbH3nSxUxdb7de/Roa4vON5oklnaqoxTjmGMhLzPHsZ/m8AQqxJWSxpzKN0C06MndIwfZJrJElFCfe8t+duCkyoj+ISgS3/V5ZWmBGjMDmZpZMmCIE9YxNOAgYd/+KBIlWZxqWqAQavZA+IvwJPN0s1/PjWxs1gGeOqwvqn7EzNecV5NtWxy7bc6fhr+iMLs0g2WX7AepqhxyE6EFdFYxYT6nvJjJA3g2wK1EyG4yzPPYMaMDaZRHt2HWytHUDug4iDCux01Vq45gzxt9UpM/zYfDlYtu0R2MpSWa40hnJDfS2x3gPnV8N7ocQjgkqzs5qqx4T/HAwKS/8o66JA3A6muL3XEDux56FOVPsHilOU8ZWP06GgLFymA1k2+NaRmGz5ZanqHDYYGsqNxO+SW7E+JdDilKjCSsIbpKdmoMHcDWl6Y3lYIYQT13c35l0XUfDpHTdbQV6uSpFSIRu2LpMv5/MMmwqoU7H+mVfgD3elb2BnfOkU2hEjpOBviJOqtOgwvBH69Y867JL15kYNMFTv7OpGqMidH9Be3m753b9rkeHMbznu/qHP/zmh1JFlgFhjOLUNdJA0jTgE27ev7fPRLUMDrT7KJRp1TrSNCX0ruVGaFV+lOxsfQsPyF9HJckFfSdSPO+Pu+Rbe+O9oE=" autocomplete="off" />
+</form></body>
+</html>
