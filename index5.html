@@ -214,24 +214,15 @@
         }
 
         .logo-header-section .container {
-            display: block;
             overflow: hidden;
         }
 
-        .inline-section {
-            display: inline-block;
-            vertical-align: top;
-        }
 
         .vertical-right-divider {
             border-right: 2px solid #fff;
             padding-right: 5px;
             margin: 5px;
             box-sizing: content-box;
-        }
-
-        .float-right {
-            float: right;
         }
 
         .govt-india {
@@ -254,7 +245,7 @@
             height: 75px;
             vertical-align: middle;
         }
-        
+
         @media (max-width: 979px) {
             .logo-resize {
                 height: 50px;
@@ -296,6 +287,12 @@
             align-items: center;
             padding-left: 15px;
             padding-right: 15px;
+        }
+
+        @media (max-width: 767px) {
+            .navigation-background-nav .container {
+                flex-direction: column;
+            }
         }
 
         .navbar-collapse {
@@ -401,6 +398,7 @@
         .dropdown-submenu>a {
             position: relative !important;
             padding-right: 30px !important;
+            background: transparent !important;
         }
 
         /* Ensure SVG arrows are positioned correctly */
@@ -474,15 +472,26 @@
                 overflow: visible !important;
             }
 
+            .navbar-collapse.collapse.in {
+                display: block !important;
+            }
+
             .navigation-background-nav {
                 display: flex;
                 flex-wrap: wrap;
+            }
+
+            .navbar-toggle {
+                display: none;
             }
         }
 
         @media (max-width: 767px) {
             .navbar-collapse {
                 max-height: none;
+            }
+            .navbar-nav .open .dropdown-menu{
+                position: static !important;
             }
 
             .navbar-collapse.collapse {
@@ -509,47 +518,107 @@
             }
 
             .navbar-toggle {
-                display: block;
+                display: block !important;
             }
-            
+
+            .navbar-header {
+                float: none;
+            }
+
+            .navbar-left,
+            .navbar-right {
+                float: none !important;
+            }
+
             .navigation-background-nav {
                 background: #00648c !important;
             }
-            
+
             .navbar-nav {
                 margin: auto -15px;
+                width: 100%;
             }
-            
+
             .navbar-default .navbar-nav .open .dropdown-menu>li>a {
                 color: #fff !important;
             }
-            
+
             .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,
             .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
                 color: #fff !important;
                 background-color: #00648c !important;
             }
-            
+
             .dropdown .dropdown-submenu .dropdown-menu {
-                display: block !important;
-                padding-left: 15px;
+                display: none !important;
+                padding: 0 !important;
+                position: static !important;
+                top: 0 !important;
+                left: 0 !important;
+                margin-top: 0 !important;
+                margin-left: 0 !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                border: none !important;
+                float: none !important;
+                width: 100% !important;
+                background-color: transparent !important;
+                list-style: none !important;
             }
             
+            /* Auto-expand all submenus when parent dropdown is open on mobile */
+            .dropdown.open .dropdown-submenu .dropdown-menu {
+                display: block !important;
+            }
+            
+            .dropdown.open .dropdown-submenu {
+                position: relative !important;
+            }
+            
+            .dropdown .dropdown-submenu.open .dropdown-menu {
+                display: block !important;
+            }
+            
+            .dropdown .dropdown-submenu.open .dropdown-menu > li {
+                display: block !important;
+                float: none !important;
+                width: 100% !important;
+            }
+            
+            .dropdown .dropdown-submenu.open .dropdown-menu > li > a {
+                padding: 10px 15px 10px 30px !important;
+                color: #fff !important;
+                display: block !important;
+                white-space: normal !important;
+                line-height: 1.42857143 !important;
+            }
+            
+            .dropdown .dropdown-submenu.open .dropdown-menu > li > a:hover,
+            .dropdown .dropdown-submenu.open .dropdown-menu > li > a:focus {
+                background-color: #00648c !important;
+                color: #fff !important;
+            }
+            
+            .dropdown-submenu > a {
+                cursor: pointer;
+            }
+            
+            .dropdown-submenu {
+                position: relative !important;
+            }
+
             .text-resize-section ul {
                 flex-wrap: wrap;
             }
-            
-            .logo-header-section .container {
-                text-align: center;
-            }
-            
-            .inline-section {
-                display: block;
-                text-align: center;
-            }
-            
-            .float-right {
-                float: none;
+
+
+
+            .vertical-right-divider {
+                border-right: none;
+                border-bottom: 2px solid #fff;
+                padding-right: 0;
+                padding-bottom: 5px;
+                margin: 5px 0;
             }
         }
 
@@ -981,31 +1050,33 @@
     </div>
 
     <!-- Logo Header Section -->
-    <div class="logo-header-section">
+    <div class="logo-header-section px-2">
         <div class="container">
-            <div class="inline-section vertical-right-divider">
-                <a href="index5.html">
-                    <img src="images/logo-national-emblemf75c.png" class="logo-resize" alt="National Emblem" />
-                </a>
-            </div>
-            <div class="inline-section fix-width">
-                <div class="slogan-name">
-                    Ministry of Road Transport &amp; Highways
+            <div class="row">
+                <div class="col-auto vertical-right-divider">
+                    <a href="index5.html">
+                        <img src="images/logo-national-emblemf75c.png" class="logo-resize" alt="National Emblem" />
+                    </a>
                 </div>
-                <div class="govt-india">
-                    Government of India
+                <div class="col-auto fix-width">
+                    <div class="slogan-name">
+                        Ministry of Road Transport &amp; Highways
+                    </div>
+                    <div class="govt-india">
+                        Government of India
+                    </div>
                 </div>
-            </div>
-            <div class="inline-section float-right">
-                <a href="index5.html">
-                    <img src="images/logo-evahanf75c.png" class="logo-resize" alt="e-vahan4" />
-                </a>
+                <div class="col-auto ms-auto text-right">
+                    <a href="index5.html">
+                        <img src="images/logo-evahanf75c.png" class="logo-resize" alt="e-vahan4" />
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar-default navigation-background" role="navigation" id="navbar">
+    <nav class="navbar-default navigation-background" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                 aria-expanded="false" aria-controls="navbar" style="border: 1px solid #333;">
@@ -1453,8 +1524,62 @@
         // Ensure navbar shows on desktop
         $(document).ready(function () {
             if ($(window).width() >= 768) {
-                $('#navbar').addClass('in').css('display', 'block');
+                $('#navbar').addClass('in').removeClass('collapse');
             }
+            
+            // Auto-expand all submenus when dropdown opens on mobile
+            $(document).on('shown.bs.dropdown', '.dropdown', function(e) {
+                if ($(window).width() < 768) {
+                    var $dropdown = $(this);
+                    // Expand all submenus when parent dropdown opens
+                    $dropdown.find('.dropdown-submenu').addClass('open');
+                    $dropdown.find('.dropdown-submenu .dropdown-menu').show();
+                }
+            });
+            
+            // Also handle click for immediate feedback
+            $(document).on('click', '.dropdown-toggle', function(e) {
+                if ($(window).width() < 768) {
+                    var $dropdown = $(this).closest('.dropdown');
+                    setTimeout(function() {
+                        if ($dropdown.hasClass('open')) {
+                            // Expand all submenus when parent dropdown opens
+                            $dropdown.find('.dropdown-submenu').addClass('open');
+                            $dropdown.find('.dropdown-submenu .dropdown-menu').show();
+                        }
+                    }, 50);
+                }
+            });
+            
+            // Handle submenu clicks on mobile (now just for visual feedback, submenus are always shown)
+            $(document).on('click', '.dropdown-submenu > a', function(e) {
+                if ($(window).width() < 768) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    
+                    // Submenus are always shown, so we don't need to toggle them
+                    // Just prevent default behavior
+                    return false;
+                }
+            });
+            
+            // Prevent dropdown from closing when clicking submenu items on mobile
+            $(document).on('click', '.dropdown-submenu .dropdown-menu a', function(e) {
+                if ($(window).width() < 768) {
+                    e.stopPropagation();
+                    // Allow the link to work normally, but keep dropdown open
+                    var $parentDropdown = $(this).closest('.dropdown');
+                    $parentDropdown.addClass('open');
+                }
+            });
+            
+            // Prevent Bootstrap from closing dropdown when clicking inside on mobile
+            $(document).on('click', '.dropdown-menu', function(e) {
+                if ($(window).width() < 768) {
+                    e.stopPropagation();
+                }
+            });
         });
     </script>
 </body>
